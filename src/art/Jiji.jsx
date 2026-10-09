@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 // Jiji from Kiki's Delivery Service: a slim, all-black cat with big white oval eyes,
 // tall pointed ears and a long, thin tail. He slow-blinks, flicks his tail, twitches an
-// ear, and his eyes follow the cursor. `mood` can be 'idle' | 'happy' | 'startled'.
+// ear, and his eyes follow the cursor. `mood` can be 'idle' | 'happy' | 'startled' | 'wave'.
 export default function Jiji({ size = 110, className = '', mood = 'idle' }) {
     const ref = useRef(null);
     const [look, setLook] = useState({ x: 0, y: 0 });
@@ -31,9 +31,19 @@ export default function Jiji({ size = 110, className = '', mood = 'idle' }) {
             <path className="jiji-tail" d="M66 162 C92 166 108 150 106 124 C105 110 98 100 90 104"
                 stroke="#141019" strokeWidth="6" strokeLinecap="round" fill="none" />
             <path d="M42 164 C36 142 42 116 58 106 C74 112 82 140 78 164 Z" fill="#141019" />
-            <path d="M51 118 V162 M63 118 V162" stroke="#141019" strokeWidth="8" strokeLinecap="round" />
+            <path d="M51 118 V162" stroke="#141019" strokeWidth="8" strokeLinecap="round" />
             <ellipse cx="50" cy="164" rx="6" ry="3.6" fill="#141019" />
-            <ellipse cx="64" cy="164" rx="6" ry="3.6" fill="#141019" />
+            {mood === 'wave' ? (
+                <g className="jiji-paw">
+                    <path d="M63 120 Q74 112 80 96" stroke="#141019" strokeWidth="8" strokeLinecap="round" fill="none" />
+                    <ellipse cx="81" cy="93" rx="5.5" ry="4.5" fill="#141019" />
+                </g>
+            ) : (
+                <>
+                    <path d="M63 118 V162" stroke="#141019" strokeWidth="8" strokeLinecap="round" />
+                    <ellipse cx="64" cy="164" rx="6" ry="3.6" fill="#141019" />
+                </>
+            )}
             <g className="jiji-head">
                 <g className="jiji-ear-l">
                     <path d="M34 62 L37 20 L58 46 Z" fill="#141019" />

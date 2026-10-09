@@ -3,20 +3,36 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Jiji from '../art/Jiji';
 import { jijiLines } from '../data';
 
-// Jiji sits in the corner and chats when you tap him.
+// Jiji sits in the corner, waves hello when you arrive, and chats when you tap him.
+const VISIT_KEY = 'jiji-visits';
+
+function greeting() {
+    const h = new Date().getHours();
+    const time = h < 5 ? 'up late, huh? me too.' : h < 12 ? 'good morning!' : h < 17 ? 'good afternoon!' : h < 21 ? 'good evening!' : 'a night owl! perfect flying weather.';
+    const visits = Number(localStorage.getItem(VISIT_KEY) || 0) + 1;
+    localStorage.setItem(VISIT_KEY, String(visits));
+    if (visits === 1) return `${time} i'm Jiji. welcome to Adrija's little corner of the sky. tap me anytime.`;
+    if (visits < 5) return `${time} welcome back! the soot sprites missed you.`;
+    return `${time} you again! visit #${visits}. should i put the kettle on?`;
+}
+
 export default function JijiCompanion() {
     const [line, setLine] = useState(null);
     const [n, setN] = useState(0);
     const [mood, setMood] = useState('idle');
 
     useEffect(() => {
-        const t = setTimeout(() => setLine('psst. tap me.'), 2500);
-        return () => clearTimeout(t);
+        const t = setTimeout(() => {
+            setLine(greeting());
+            setMood('wave');
+        }, 1600);
+        const t2 = setTimeout(() => setMood('idle'), 4400);
+        return () => { clearTimeout(t); clearTimeout(t2); };
     }, []);
 
     useEffect(() => {
         if (!line) return;
-        const t = setTimeout(() => setLine(null), 4500);
+        const t = setTimeout(() => setLine(null), line.length > 60 ? 7000 : 4500);
         return () => clearTimeout(t);
     }, [line, n]);
 

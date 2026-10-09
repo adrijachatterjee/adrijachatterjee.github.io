@@ -551,7 +551,10 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .jiji-btn:hover .jiji-head { animation: none; transform: rotate(-12deg); }
 @keyframes headtilt { 0%, 40%, 100% { transform: rotate(0); } 48%, 60% { transform: rotate(-9deg); } 68% { transform: rotate(0); } }
 .jiji-tail { animation: tail 2.6s ease-in-out infinite; }
-.jiji-happy .jiji-tail { animation-duration: 0.5s; }
+.jiji-happy .jiji-tail, .jiji-wave .jiji-tail { animation-duration: 0.5s; }
+.jiji-paw { transform-box: view-box; transform-origin: 63px 120px; animation: wave 0.55s ease-in-out infinite alternate; }
+@keyframes wave { from { transform: rotate(-12deg); } to { transform: rotate(16deg); } }
+.jiji-wave .jiji-head { animation: none; transform: rotate(-8deg); }
 .jiji-startled .jiji-tail { animation: none; }
 @keyframes ear { 0%, 90%, 100% { transform: rotate(0); } 93% { transform: rotate(-14deg); } 96% { transform: rotate(4deg); } }
 
