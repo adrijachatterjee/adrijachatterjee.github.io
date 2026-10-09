@@ -4,6 +4,15 @@ import SootSprite from '../art/SootSprite';
 import { GitHub, LinkedIn, Instagram, Mail, Quill } from './Icons';
 import { links } from '../data';
 
+const reasons = [
+    'just chat about anything',
+    'nerd out about tech',
+    'get something coded or built',
+    'book a palm or birth chart reading',
+    'find a café-hopping buddy in Bengaluru',
+    'swap anime, manga or manhwa recs',
+];
+
 const socials = [
     [links.linkedin, 'linkedin', LinkedIn],
     [links.github, 'github', GitHub],
@@ -16,7 +25,12 @@ export default function Contact() {
     return (
         <section id="hello" className="section hello">
             <SectionHead chapter="ch. 09" film="my neighbour totoro" title="waiting at the bus stop<br>for your <em>message</em>"
-                lede="Want to talk code, books, travel, café recs, or book a reading? Totoro and I are waiting. Bring an umbrella." />
+                lede="Honestly, I'm a bit of a jack of all trades (lol), so come say hi if you want to:" />
+
+            <Reveal className="reasons">
+                {reasons.map((r, i) => <span key={r} className="reason" style={{ '--tilt': `${i % 2 ? 2 : -2}deg` }}>{r}</span>)}
+            </Reveal>
+            <p className="hand reasons-foot">Totoro and I will be at the bus stop. Bring an umbrella.</p>
 
             <Reveal>
                 <TotoroTune>
@@ -28,7 +42,6 @@ export default function Contact() {
             </Reveal>
 
             <a className="email hand" href={`mailto:${links.email}`}>{links.email}</a>
-            <a className="btn btn-gold reading-cta" href="#book">book an astrology or palm reading</a>
             <div className="socials">
                 {socials.map(([href, label, Icon]) => (
                     <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" aria-label={label}>

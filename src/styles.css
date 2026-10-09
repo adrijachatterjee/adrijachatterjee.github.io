@@ -191,16 +191,44 @@ em { font-style: italic; color: var(--accent); }
 
 .scroll-cue { position: absolute; bottom: 26px; font-size: 1.35rem; animation: bob 3s ease-in-out infinite; }
 
-/* ---------- marquee ---------- */
+/* ---------- bunting ---------- */
 
-.marquee {
-    overflow: hidden; white-space: nowrap; padding: 16px 0;
-    background: var(--ink); color: #fff; transform: rotate(-2deg) scale(1.06); margin: 10px 0 40px;
+.bunting { position: relative; overflow: hidden; padding: 10px 0 18px; margin: 10px 0 40px; }
+.bunting::before {
+    content: ''; position: absolute; left: 0; right: 0; top: 14px; height: 3px; border-radius: 3px;
+    background: repeating-linear-gradient(90deg, #a8825a 0 6px, #8a6a4a 6px 12px); box-shadow: 0 2px 4px rgba(60, 40, 20, 0.2);
 }
-[data-theme='night'] .marquee { background: var(--accent); color: #1d1d4f; }
-.marquee-track { display: inline-flex; animation: scroll 50s linear infinite; }
-.mq-item { display: inline-flex; align-items: center; gap: 22px; padding-right: 22px; font-family: var(--display); font-style: italic; font-weight: 600; font-size: 1.8rem; }
+.bunting-track { display: inline-flex; white-space: nowrap; animation: scroll 70s linear infinite; }
+.bunting-row { display: inline-flex; gap: 6px; padding-right: 6px; }
+.flag {
+    position: relative; display: inline-block; margin-top: 10px; transform-origin: 50% 0;
+    animation: flagsway 3.2s ease-in-out infinite; animation-delay: var(--d);
+    filter: drop-shadow(0 4px 4px rgba(60, 40, 90, 0.18));
+}
+.flag::before { content: ''; position: absolute; top: -3px; left: 6px; right: 6px; height: 5px; border-radius: 3px; background: #8a6a4a; }
+.flag span {
+    display: block; padding: 10px 18px 26px; background: var(--c); color: #2a2440;
+    font-family: var(--display); font-style: italic; font-weight: 700; font-size: 1.3rem; line-height: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 74%, 0 100%);
+}
+[data-theme='night'] .flag span { background: color-mix(in srgb, var(--c) 70%, #2a2154); color: #fff8ec; }
+@keyframes flagsway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
 @keyframes scroll { to { transform: translateX(-50%); } }
+
+/* ---------- fairy lights (night only) ---------- */
+
+.fairy { position: absolute; left: 0; right: 0; top: 70px; height: 110px; pointer-events: none; opacity: 0; transition: opacity 1s; }
+[data-theme='night'] .fairy { opacity: 1; }
+.fairy-wire { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.fairy-wire path { fill: none; stroke: #4a4060; stroke-width: 1.5; }
+.bulb {
+    position: absolute; width: 9px; height: 13px; margin: -1px 0 0 -4.5px; border-radius: 50% 50% 45% 45%;
+    background: radial-gradient(circle at 40% 35%, #fff 0 18%, var(--c) 45%);
+    box-shadow: 0 0 10px 3px color-mix(in srgb, var(--c) 70%, transparent), 0 0 24px 8px color-mix(in srgb, var(--c) 30%, transparent);
+    animation: glow 2.4s ease-in-out infinite;
+}
+.bulb::before { content: ''; position: absolute; top: -4px; left: 2px; width: 5px; height: 5px; border-radius: 1px; background: #5a5070; }
+@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
 
 /* ---------- sections ---------- */
 
@@ -571,18 +599,18 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .jiji-btn { display: block; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2)); }
 .jiji-bubble { right: 70px; bottom: 96px; white-space: normal; width: max-content; max-width: 240px; text-align: left; }
 .jiji-bubble::after { content: ''; position: absolute; right: -6px; bottom: 14px; border: 8px solid transparent; border-left-color: #fff; border-right: 0; }
-.jiji-tail { transform-box: view-box; transform-origin: 66px 162px; }
+.jiji-tail { transform-box: view-box; transform-origin: 52px 206px; }
 @keyframes tail { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-16deg); } 55% { transform: rotate(6deg); } }
 .jiji-eyes { animation: slowblink 6s infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes slowblink { 0%, 88%, 100% { transform: scaleY(1); } 91%, 94% { transform: scaleY(0.08); } }
 .jiji-ear-l { animation: ear 7s ease-in-out infinite; transform-box: fill-box; transform-origin: right bottom; }
 .jiji-ear-r { animation: ear 9s ease-in-out infinite -4s; transform-box: fill-box; transform-origin: left bottom; }
-.jiji-head { transform-box: view-box; transform-origin: 60px 96px; animation: headtilt 9s ease-in-out infinite; transition: transform 0.4s; }
+.jiji-head { transform-box: view-box; transform-origin: 82px 134px; animation: headtilt 9s ease-in-out infinite; transition: transform 0.4s; }
 .jiji-btn:hover .jiji-head { animation: none; transform: rotate(-12deg); }
 @keyframes headtilt { 0%, 40%, 100% { transform: rotate(0); } 48%, 60% { transform: rotate(-9deg); } 68% { transform: rotate(0); } }
 .jiji-tail { animation: tail 2.6s ease-in-out infinite; }
 .jiji-happy .jiji-tail, .jiji-wave .jiji-tail { animation-duration: 0.5s; }
-.jiji-paw { transform-box: view-box; transform-origin: 63px 120px; animation: wave 0.55s ease-in-out infinite alternate; }
+.jiji-paw { transform-box: view-box; transform-origin: 102px 172px; animation: wave 0.55s ease-in-out infinite alternate; }
 @keyframes wave { from { transform: rotate(-12deg); } to { transform: rotate(16deg); } }
 .jiji-wave .jiji-head { animation: none; transform: rotate(-8deg); }
 .jiji-startled .jiji-tail { animation: none; }
@@ -591,7 +619,13 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 /* ---------- readings ---------- */
 
 .btn-gold { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f6d68b, #e9b44c); color: #2a1f3d; box-shadow: 0 10px 26px rgba(233, 180, 76, 0.35); }
-.reading-cta { display: table; margin: 0 auto 26px; }
+.reasons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 760px; margin: -12px auto 10px; }
+.reason {
+    padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; transform: rotate(var(--tilt));
+    background: var(--glass); border: 1.5px dashed var(--accent); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s;
+}
+.reason:hover { transform: rotate(0) translateY(-4px) scale(1.05); background: color-mix(in srgb, var(--accent-2) 22%, var(--glass)); }
+.reasons-foot { font-size: 1.5rem; margin-bottom: 12px; }
 .anchor { position: absolute; top: -110px; }
 
 .cosmos {
@@ -612,35 +646,14 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 }
 @keyframes twinkle { 50% { opacity: 0.35; } }
 
-.zodiac { position: relative; display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: center; }
-.wheel-wrap { position: relative; width: 340px; height: 340px; }
-.wheel { width: 100%; height: 100%; overflow: visible; }
-.wheel-ring { fill: rgba(255, 255, 255, 0.04); stroke: #e9c46a; stroke-width: 1.5; }
-.wheel-inner { fill: rgba(10, 8, 40, 0.5); stroke: rgba(233, 196, 106, 0.5); stroke-width: 1; }
-.wheel-tick { stroke: rgba(233, 196, 106, 0.35); stroke-width: 1; }
-.wheel-star { fill: #fff6e0; opacity: 0.8; }
-.wheel-hit { fill: transparent; }
-.wheel-sign { cursor: pointer; outline: none; }
-.wheel-sign text { font-size: 17px; fill: #e9d8ff; text-anchor: middle; dominant-baseline: central; font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Apple Symbols', serif; transition: fill 0.3s; }
-.wheel-sign:hover text, .wheel-sign:focus-visible text { fill: #fff; }
-.wheel-sign.on text { fill: #e9c46a; font-size: 21px; }
-.wheel-sign.on .wheel-hit { fill: rgba(233, 196, 106, 0.16); }
-.wheel-pointer { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); border: 9px solid transparent; border-top: 14px solid #e9c46a; z-index: 2; }
-.wheel-center { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
-.wheel-glyph { font-size: 64px; color: #e9c46a; text-shadow: 0 0 24px rgba(233, 196, 106, 0.6); font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Apple Symbols', serif; }
-.wheel-center .hand { font-size: 3rem; color: #e9c46a; }
 
-.date-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
-.date-field span, .form-grid span { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: #cbb8ff; font-weight: 700; }
 .cosmos input, .cosmos textarea {
     font: inherit; color: #fff; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(233, 196, 106, 0.35);
     border-radius: 12px; padding: 11px 14px; color-scheme: dark; width: 100%;
 }
 .cosmos input::placeholder, .cosmos textarea::placeholder { color: rgba(241, 234, 255, 0.45); }
 .cosmos input:focus, .cosmos textarea:focus { outline: 2px solid #e9c46a; outline-offset: 1px; }
-.date-field input { max-width: 240px; }
 .sign-meta { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: #e9c46a; }
-.sign-card h3 { font-size: 3rem; line-height: 1; margin: 4px 0; }
 .sign-traits { font-family: var(--hand); font-size: 1.5rem; color: #ffb3c7; }
 .sign-reading { list-style: none; margin-top: 14px; display: grid; gap: 8px; color: #ddd2f5; }
 .sign-reading b { margin-right: 6px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e9c46a; }
@@ -700,20 +713,31 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .palm-info h4 { font-family: var(--display); font-size: 2rem; text-transform: lowercase; }
 .palm-info p { color: #ddd2f5; max-width: 460px; }
 
-.reading-form { position: relative; }
-.reading-form h3 { font-size: 2.2rem; }
-.form-sub { color: #ddd2f5; margin: 4px 0 18px; }
-.type-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-.type-pill { padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(233, 196, 106, 0.4); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: background 0.3s, color 0.3s; }
-.type-pill input { position: absolute; opacity: 0; pointer-events: none; }
-.type-pill.on { background: #e9c46a; color: #2a1f3d; }
-.type-pill:focus-within { outline: 2px solid #e9c46a; outline-offset: 2px; }
-.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-.form-grid label { display: flex; flex-direction: column; gap: 6px; }
-.form-grid .full { grid-column: 1 / -1; }
-.form-note { color: #ffb3c7; font-size: 1.3rem; margin-top: 10px; }
-.form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 .form-fine { margin-top: 12px; font-size: 0.78rem; color: rgba(241, 234, 255, 0.6); }
+
+.vedic { position: relative; display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: center; }
+.vedic-chart {
+    display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); width: 380px; aspect-ratio: 1;
+    border: 2px solid #e9c46a; border-radius: 6px; background: rgba(10, 8, 40, 0.45); box-shadow: 0 0 30px rgba(233, 196, 106, 0.15);
+}
+.v-cell { position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 6px 7px; border: 1px solid rgba(233, 196, 106, 0.35); transition: background 0.4s; }
+.v-cell.moon { background: rgba(233, 196, 106, 0.16); }
+.v-rashi { font-size: 0.68rem; letter-spacing: 0.06em; color: #cbb8ff; }
+.v-planets { display: flex; flex-wrap: wrap; gap: 4px; }
+.v-planets b { font-family: var(--display); font-size: 1.15rem; color: #e9c46a; line-height: 1; }
+.v-center { grid-row: 2 / 4; grid-column: 2 / 4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid rgba(233, 196, 106, 0.35); text-align: center; padding: 10px; }
+.v-om { font-size: 2.6rem; color: #e9c46a; line-height: 1; text-shadow: 0 0 18px rgba(233, 196, 106, 0.6); }
+.v-center .hand { font-size: 1.3rem; color: #cbb8ff; }
+.vedic-fields { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.vedic-fields label { display: flex; flex-direction: column; gap: 6px; flex: 1 1 140px; }
+.vedic-fields span { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: #cbb8ff; font-weight: 700; }
+.cosmos select {
+    font: inherit; color: #fff; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(233, 196, 106, 0.35);
+    border-radius: 12px; padding: 11px 12px; color-scheme: dark; width: 100%;
+}
+.vedic-result h3 { font-size: 2.6rem; line-height: 1.05; margin: 4px 0; }
+.v-en { font-size: 1.3rem; font-style: italic; font-weight: 500; color: #cbb8ff; }
+.vedic-result .form-fine a { color: #e9c46a; text-decoration: underline; }
 
 /* ---------- jiji's game ---------- */
 
@@ -748,8 +772,7 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
     .about-row { grid-template-columns: 1fr; }
     .projects, .quests { grid-template-columns: 1fr 1fr; }
     .noface-spot { display: none; }
-    .zodiac { grid-template-columns: 1fr; justify-items: center; text-align: center; }
-    .date-field { align-items: center; }
+    .vedic { grid-template-columns: 1fr; justify-items: center; }
 }
 
 
@@ -768,16 +791,17 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
     .hero-cups svg { width: 74px; height: 74px; }
     .hs3 { display: none; }
     .soot-hint { display: none; }
-    .jiji-corner svg { width: 60px; height: 85px; }
+    .jiji-corner svg { width: 60px; height: 86px; }
     .game { height: 380px; }
     .cosmos { padding: 24px 18px; }
-    .wheel-wrap { width: 280px; height: 280px; }
+    .vedic-chart { width: 100%; max-width: 340px; }
+    .bulb:nth-of-type(even) { display: none; }
+    .fairy { top: 60px; height: 80px; }
+    .v-rashi { font-size: 0.58rem; }
     .palm { grid-template-columns: 1fr; justify-items: center; text-align: center; }
-    .form-grid { grid-template-columns: 1fr; }
     .tarot-slots { gap: 10px; }
     .tarot-card { width: 92px; height: 146px; }
     .fan-card { width: 56px; height: 90px; left: calc(50% - 28px); }
-    .sign-card h3 { font-size: 2.4rem; }
     .howl-door { transform: scale(0.85); }
     .jiji-bubble { right: 54px; bottom: 72px; max-width: 200px; font-size: 1.1rem; }
 }

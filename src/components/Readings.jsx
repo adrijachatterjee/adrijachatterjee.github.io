@@ -1,75 +1,66 @@
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Reveal, { SectionHead } from './Reveal';
-import { Instagram, Mail } from './Icons';
-import { links } from '../data';
-import { SIGNS, signFor, dailyReading, TAROT, PALM_LINES, READING_TYPES } from '../divination';
+import { TAROT, PALM_LINES } from '../divination';
+import { kundli, RASHIS, SOUTH_GRID, TIMEZONES } from '../vedic';
 
-// ---------- zodiac wheel ----------
+// ---------- vedic birth chart ----------
 
-function ZodiacWheel() {
-    const [sign, setSign] = useState(null);
-    const [date, setDate] = useState('');
-    const idx = sign ? SIGNS.indexOf(sign) : 0;
-    const seg = 360 / 12;
-    const reading = useMemo(() => (sign ? dailyReading(sign) : null), [sign]);
-
-    const onDate = (v) => {
-        setDate(v);
-        const [, m, d] = v.split('-').map(Number);
-        if (m && d) setSign(signFor(m, d));
-    };
+function VedicChart() {
+    const [f, setF] = useState({ date: '', time: '', tz: '+05:30' });
+    const set = (k) => (e) => setF((v) => ({ ...v, [k]: e.target.value }));
+    const k = useMemo(() => (f.date ? kundli(f.date, f.time, f.tz) : null), [f]);
+    const cells = SOUTH_GRID.map(([row, col], i) => ({ row, col, i, planets: k ? k.planets.filter((pl) => pl.rashi === i) : [] }));
 
     return (
-        <div className="zodiac">
-            <div className="wheel-wrap">
-                <span className="wheel-pointer" aria-hidden="true" />
-                <motion.svg viewBox="-110 -110 220 220" className="wheel" role="group" aria-label="Zodiac wheel"
-                    animate={{ rotate: -(idx * seg) }} transition={{ type: 'spring', stiffness: 40, damping: 12 }}>
-                    <circle r="106" className="wheel-ring" />
-                    <circle r="74" className="wheel-inner" />
-                    {SIGNS.map((s, i) => {
-                        const a = ((i * seg - 90) * Math.PI) / 180;
-                        const a0 = (((i - 0.5) * seg - 90) * Math.PI) / 180;
-                        return (
-                            <g key={s.name} className={`wheel-sign ${sign === s ? 'on' : ''}`} onClick={() => setSign(s)}
-                                role="button" tabIndex={0} aria-label={s.name} onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setSign(s)}>
-                                <line x1={Math.cos(a0) * 74} y1={Math.sin(a0) * 74} x2={Math.cos(a0) * 106} y2={Math.sin(a0) * 106} className="wheel-tick" />
-                                <circle cx={Math.cos(a) * 90} cy={Math.sin(a) * 90} r="14" className="wheel-hit" />
-                                <text x={Math.cos(a) * 90} y={Math.sin(a) * 90} transform={`rotate(${i * seg} ${Math.cos(a) * 90} ${Math.sin(a) * 90})`}>{s.glyph}</text>
-                            </g>
-                        );
-                    })}
-                    {Array.from({ length: 18 }, (_, i) => {
-                        const a = (i / 18) * Math.PI * 2;
-                        const r = 20 + ((i * 37) % 48);
-                        return <circle key={i} cx={Math.cos(a) * r} cy={Math.sin(a) * r} r={i % 3 ? 0.9 : 1.6} className="wheel-star" />;
-                    })}
-                </motion.svg>
-                <div className="wheel-center">{sign ? <span className="wheel-glyph">{sign.glyph}</span> : <span className="hand">✦</span>}</div>
+        <div className="vedic">
+            <div className="vedic-chart" role="img" aria-label={k ? `South Indian chart with Moon in ${k.moonRashi.name}` : 'Empty South Indian chart'}>
+                {cells.map((c) => (
+                    <div key={c.i} className={`v-cell ${k && k.moonRashi === RASHIS[c.i] ? 'moon' : ''}`} style={{ gridRow: c.row + 1, gridColumn: c.col + 1 }}>
+                        <span className="v-rashi">{RASHIS[c.i].name}</span>
+                        <span className="v-planets">
+                            {c.planets.map((pl) => (
+                                <motion.b key={pl.key} initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} title={pl.name}>{pl.key}</motion.b>
+                            ))}
+                        </span>
+                    </div>
+                ))}
+                <div className="v-center">
+                    <span className="v-om">ॐ</span>
+                    <span className="hand">{k ? 'your rashi chakra' : 'enter your birth details'}</span>
+                </div>
             </div>
 
-            <div className="zodiac-side">
-                <label className="date-field">
-                    <span>when's your birthday?</span>
-                    <input type="date" value={date} onChange={(e) => onDate(e.target.value)} />
-                </label>
+            <div className="vedic-side">
+                <div className="vedic-fields">
+                    <label><span>birth date</span><input type="date" value={f.date} onChange={set('date')} /></label>
+                    <label><span>birth time</span><input type="time" value={f.time} onChange={set('time')} /></label>
+                    <label><span>time zone</span>
+                        <select value={f.tz} onChange={set('tz')}>
+                            {TIMEZONES.map(([v, l]) => <option key={v} value={v}>{l} ({v})</option>)}
+                        </select>
+                    </label>
+                </div>
                 <AnimatePresence mode="wait">
-                    {sign ? (
-                        <motion.div key={sign.name} className="sign-card" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
-                            <p className="sign-meta">{sign.element} sign · ruled by {sign.planet}</p>
-                            <h3>{sign.name}</h3>
-                            <p className="sign-traits">{sign.traits.join(' · ')}</p>
+                    {k ? (
+                        <motion.div key={f.date + f.time + f.tz} className="vedic-result" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+                            <p className="sign-meta">chandra rashi · your moon sign</p>
+                            <h3>{k.moonRashi.name} <span className="v-en">({k.moonRashi.en})</span></h3>
+                            <p className="sign-traits">{k.moonRashi.nature}</p>
                             <ul className="sign-reading">
-                                <li><b>today's theme</b> {reading.theme}</li>
-                                <li><b>the stars suggest</b> {reading.advice}</li>
-                                <li><b>lucky colour</b> {reading.color} · <b>number</b> {reading.number}</li>
-                                <li><b>your cosmic brew</b> {sign.brew}</li>
+                                <li><b>nakshatra</b> {k.nakshatra.name}, pada {k.nakshatra.pada} · ruled by {k.nakshatra.lord}</li>
+                                <li><b>surya rashi</b> {k.sunRashi.name} ({k.sunRashi.en})</li>
+                                <li><b>rashi lord</b> {k.moonRashi.lord}</li>
+                                <li><b>your cosmic brew</b> {k.moonRashi.brew}</li>
                             </ul>
+                            <p className="form-fine">
+                                Sidereal (Lahiri) positions{k.timeKnown ? '' : ', assuming noon since no birth time was given'}. Su Sun · Mo Moon · Ra Rahu · Ke Ketu.
+                                For a full kundli with your lagna and dashas, <a href="#hello">ask me for a reading</a>.
+                            </p>
                         </motion.div>
                     ) : (
                         <motion.p key="hint" className="hand zodiac-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            pick your birthday, or tap a sign on the wheel
+                            in Jyotish, your moon sign says the most about you. let's find yours.
                         </motion.p>
                     )}
                 </AnimatePresence>
@@ -197,7 +188,7 @@ function TarotGame() {
                                 {cards[0].name} behind you, {cards[1].name} with you, and {cards[2].name} ahead. Want the full story?
                             </p>
                             <div className="tarot-actions">
-                                <a className="btn btn-gold" href="#book">book a real reading</a>
+                                <a className="btn btn-gold" href="#hello">ask me for a real reading</a>
                                 <button className="btn btn-ghost" onClick={() => { setQuestion(''); setStage('ask'); }}>ask again</button>
                             </div>
                         </motion.div>
@@ -240,69 +231,11 @@ function PalmMap() {
     );
 }
 
-// ---------- booking ----------
-
-function ReadingRequest() {
-    const [f, setF] = useState({ name: '', type: 'chart', date: '', time: '', place: '', question: '' });
-    const set = (k) => (e) => setF((v) => ({ ...v, [k]: e.target.value }));
-    const type = READING_TYPES.find((t) => t.id === f.type);
-    const needsBirth = type.needs !== 'palm';
-    const needsPalm = type.needs !== 'birth';
-
-    const submit = (e) => {
-        e.preventDefault();
-        const lines = [
-            `Hi Adrija! I'd love a ${type.label}.`, '',
-            `Name: ${f.name}`,
-            needsBirth && `Birth date: ${f.date}`,
-            needsBirth && `Birth time: ${f.time || 'not sure'}`,
-            needsBirth && `Birth place: ${f.place}`,
-            needsPalm && 'Palm photos: attaching clear photos of both palms.',
-            f.question && '', f.question && `What I'd like to explore: ${f.question}`,
-        ].filter((l) => l !== false && l !== undefined && l !== null);
-        const subject = `Reading request: ${type.label}`;
-        window.location.href = `mailto:${links.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-    };
-
-    return (
-        <form className="reading-form" onSubmit={submit}>
-            <h3>book a reading with me</h3>
-            <p className="form-sub">Tell me a little about you and I'll write back with the details. It's all done over email or Instagram DMs.</p>
-            <div className="type-pills" role="radiogroup" aria-label="Reading type">
-                {READING_TYPES.map((t) => (
-                    <label key={t.id} className={`type-pill ${f.type === t.id ? 'on' : ''}`}>
-                        <input type="radio" name="type" value={t.id} checked={f.type === t.id} onChange={set('type')} />
-                        {t.label}
-                    </label>
-                ))}
-            </div>
-            <div className="form-grid">
-                <label><span>your name</span><input required value={f.name} onChange={set('name')} placeholder="Sophie Hatter" /></label>
-                {needsBirth && <label><span>birth date</span><input type="date" required value={f.date} onChange={set('date')} /></label>}
-                {needsBirth && <label><span>birth time (if you know it)</span><input type="time" value={f.time} onChange={set('time')} /></label>}
-                {needsBirth && <label><span>birth place</span><input required value={f.place} onChange={set('place')} placeholder="city, country" /></label>}
-                <label className="full"><span>anything you'd like to explore?</span><textarea rows="3" value={f.question} onChange={set('question')} placeholder="love, career, a big decision, or just curious" /></label>
-            </div>
-            {needsPalm && <p className="form-note hand">for palm readings, attach clear photos of both palms to the email</p>}
-            <div className="form-actions">
-                <button type="submit" className="btn btn-gold"><Mail size={18} /> send my request</button>
-                <a className="btn btn-ghost" href={links.instagram} target="_blank" rel="noopener noreferrer"><Instagram size={18} /> or DM me on Instagram</a>
-            </div>
-            <p className="form-fine">Readings are for reflection and fun, not a substitute for professional advice.</p>
-        </form>
-    );
-}
-
 export default function Readings() {
     return (
         <section id="readings" className="section readings">
             <SectionHead chapter="ch. 03" film="a falling star (howl's moving castle)" title="the stars told me <em>so</em>"
-                lede="I'm an astrology and palmistry enthusiast, and I do readings. Find your sign, pull a card, explore the lines of a palm, then book a reading with me." />
-
-            <Reveal className="cosmos">
-                <div className="cosmos-stars" aria-hidden="true" />
-                <ZodiacWheel />
-            </Reveal>
+                lede="I'm an astrology and palmistry enthusiast, and I do readings. Pull a card, explore the lines of a palm, and peek at your Vedic chart." />
 
             <Reveal className="cosmos">
                 <div className="cosmos-stars" aria-hidden="true" />
@@ -316,9 +249,10 @@ export default function Readings() {
                 <PalmMap />
             </Reveal>
 
-            <Reveal className="cosmos booking" delay={0.05}>
-                <span id="book" className="anchor" />
-                <ReadingRequest />
+            <Reveal className="cosmos">
+                <div className="cosmos-stars" aria-hidden="true" />
+                <p className="eyebrow">your vedic birth chart · jyotish</p>
+                <VedicChart />
             </Reveal>
         </section>
     );

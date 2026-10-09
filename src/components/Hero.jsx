@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Sparkle } from './Icons';
 import SootSprite from '../art/SootSprite';
 import { Matcha, Latte, Chai } from '../art/Cups';
+import FairyLights from './FairyLights';
 
 function Letters({ text, className, delay = 0 }) {
     return (
@@ -21,6 +22,7 @@ function Letters({ text, className, delay = 0 }) {
 export default function Hero() {
     return (
         <section className="hero" id="top">
+            <FairyLights />
             <motion.p className="hand hero-hi" initial={{ opacity: 0, rotate: -12 }} animate={{ opacity: 1, rotate: -5 }} transition={{ delay: 0.2 }}>
                 hi there, i'm
             </motion.p>

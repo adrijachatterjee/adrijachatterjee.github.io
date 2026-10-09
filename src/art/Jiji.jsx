@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
-// Jiji from Kiki's Delivery Service: a slim, all-black cat with big white oval eyes,
-// tall pointed ears and a long, thin tail. He slow-blinks, flicks his tail, twitches an
-// ear, and his eyes follow the cursor. `mood` can be 'idle' | 'happy' | 'startled' | 'wave'.
+// Jiji from Kiki's Delivery Service, drawn after Adrija's reference: a round head with tall,
+// finely outlined ears, big white eyes with small pupils, a bell-shaped body sitting flat,
+// a thick tail curling out along the ground, and long thin whiskers.
+// He slow-blinks, flicks his tail, twitches his ears and follows the cursor with his eyes.
+// `mood`: 'idle' | 'happy' | 'startled' | 'wave'
+const FUR = '#161320';
+const LINE = '#3b3150';
+
 export default function Jiji({ size = 110, className = '', mood = 'idle' }) {
     const ref = useRef(null);
     const [look, setLook] = useState({ x: 0, y: 0 });
@@ -12,10 +17,10 @@ export default function Jiji({ size = 110, className = '', mood = 'idle' }) {
             const r = ref.current?.getBoundingClientRect();
             if (!r) return;
             const dx = e.clientX - (r.left + r.width / 2);
-            const dy = e.clientY - (r.top + r.height * 0.35);
+            const dy = e.clientY - (r.top + r.height * 0.45);
             const d = Math.hypot(dx, dy) || 1;
             const m = Math.min(1, d / 250);
-            setLook({ x: (dx / d) * 3.6 * m, y: (dy / d) * 4.2 * m });
+            setLook({ x: (dx / d) * 3.4 * m, y: (dy / d) * 3.4 * m });
         };
         window.addEventListener('pointermove', onMove);
         return () => window.removeEventListener('pointermove', onMove);
@@ -23,54 +28,52 @@ export default function Jiji({ size = 110, className = '', mood = 'idle' }) {
 
     const startled = mood === 'startled';
     const happy = mood === 'happy';
-    const pupilRy = startled ? 4 : 7.5;
+    const big = startled ? 1.15 : 1;
 
     return (
-        <svg ref={ref} viewBox="0 0 120 170" width={size} height={(size * 170) / 120}
+        <svg ref={ref} viewBox="0 0 160 230" width={size} height={(size * 230) / 160}
             className={`jiji jiji-${mood} ${className}`} aria-hidden="true">
-            <path className="jiji-tail" d="M66 162 C92 166 108 150 106 124 C105 110 98 100 90 104"
-                stroke="#141019" strokeWidth="6" strokeLinecap="round" fill="none" />
-            <path d="M42 164 C36 142 42 116 58 106 C74 112 82 140 78 164 Z" fill="#141019" />
-            <path d="M51 118 V162" stroke="#141019" strokeWidth="8" strokeLinecap="round" />
-            <ellipse cx="50" cy="164" rx="6" ry="3.6" fill="#141019" />
-            {mood === 'wave' ? (
+            <path className="jiji-tail" d="M52 206 C36 198 16 200 5 220" stroke={FUR} strokeWidth="10" strokeLinecap="round" fill="none" />
+            <path d="M58 128 C50 156 44 190 42 222 L128 222 C126 190 120 156 108 126 Z" fill={FUR} />
+            {mood === 'wave' && (
                 <g className="jiji-paw">
-                    <path d="M63 120 Q74 112 80 96" stroke="#141019" strokeWidth="8" strokeLinecap="round" fill="none" />
-                    <ellipse cx="81" cy="93" rx="5.5" ry="4.5" fill="#141019" />
+                    <path d="M102 172 Q114 156 120 140" stroke={FUR} strokeWidth="9" strokeLinecap="round" fill="none" />
+                    <ellipse cx="121" cy="136" rx="6" ry="5" fill={FUR} />
                 </g>
-            ) : (
-                <>
-                    <path d="M63 118 V162" stroke="#141019" strokeWidth="8" strokeLinecap="round" />
-                    <ellipse cx="64" cy="164" rx="6" ry="3.6" fill="#141019" />
-                </>
             )}
+
             <g className="jiji-head">
                 <g className="jiji-ear-l">
-                    <path d="M34 62 L37 20 L58 46 Z" fill="#141019" />
-                    <path d="M39 54 L40 31 L52 46 Z" fill="#2e2440" />
+                    <path d="M45 86 L33 48 L64 70 Z" fill={FUR} />
+                    <path d="M44 84 L31 45 L40 56" stroke={LINE} strokeWidth="1" fill="none" strokeLinecap="round" />
+                    <path d="M40 74 L36 56 L52 70 Z" fill="#2c2440" />
                 </g>
                 <g className="jiji-ear-r">
-                    <path d="M86 62 L83 20 L62 46 Z" fill="#141019" />
-                    <path d="M81 54 L80 31 L68 46 Z" fill="#2e2440" />
+                    <path d="M80 68 L92 32 L108 74 Z" fill={FUR} />
+                    <path d="M93 30 L109 72" stroke={LINE} strokeWidth="1" fill="none" strokeLinecap="round" />
+                    <path d="M89 62 L93 42 L102 68 Z" fill="#2c2440" />
                 </g>
-                <path d="M30 70 C30 50 44 42 60 42 C76 42 90 50 90 70 C90 86 78 96 60 96 C42 96 30 86 30 70 Z" fill="#141019" />
+                <ellipse cx="80" cy="102" rx="36" ry="33" fill={FUR} />
+
                 <g className="jiji-eyes">
                     {happy ? (
-                        <g stroke="#fffdf6" strokeWidth="3.4" fill="none" strokeLinecap="round">
-                            <path d="M40 70 Q48 62 56 70" /><path d="M64 70 Q72 62 80 70" />
+                        <g stroke="#fffdf6" strokeWidth="3.2" fill="none" strokeLinecap="round">
+                            <path d="M53 108 Q63 99 73 108" /><path d="M93 98 Q101 90 109 98" />
                         </g>
                     ) : (
                         <>
-                            <ellipse cx="48" cy="68" rx={startled ? 12 : 10.5} ry={startled ? 15 : 13} fill="#fffdf6" />
-                            <ellipse cx="72" cy="68" rx={startled ? 12 : 10.5} ry={startled ? 15 : 13} fill="#fffdf6" />
-                            <ellipse cx={48 + look.x} cy={70 + look.y} rx={startled ? 3 : 4.6} ry={pupilRy} fill="#141019" />
-                            <ellipse cx={72 + look.x} cy={70 + look.y} rx={startled ? 3 : 4.6} ry={pupilRy} fill="#141019" />
-                            <circle cx={46.4 + look.x} cy={66 + look.y} r="1.5" fill="#fff" />
-                            <circle cx={70.4 + look.x} cy={66 + look.y} r="1.5" fill="#fff" />
+                            <ellipse cx="63" cy="108" rx={13.5 * big} ry={12.8 * big} fill="#fffdf6" />
+                            <ellipse cx="101" cy="96" rx={10.6 * big} ry={10.4 * big} fill="#fffdf6" />
+                            <ellipse cx={68 + look.x} cy={110 + look.y} rx={startled ? 1.8 : 2.6} ry={startled ? 3 : 4.4} fill={FUR} />
+                            <ellipse cx={99 + look.x} cy={98 + look.y} rx={startled ? 1.7 : 2.4} ry={startled ? 2.8 : 4} fill={FUR} />
                         </>
                     )}
                 </g>
-                <path d="M57 86 Q60 88.5 63 86" stroke="#4a3d5c" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+
+                <g stroke={LINE} strokeWidth="1" strokeLinecap="round" fill="none">
+                    <path d="M50 124 L20 126" /><path d="M52 130 L28 146" />
+                    <path d="M114 96 L146 85" /><path d="M114 103 L146 101" />
+                </g>
             </g>
         </svg>
     );
