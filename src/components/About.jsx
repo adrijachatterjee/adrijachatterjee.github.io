@@ -23,7 +23,7 @@ export default function About() {
                     <p>hii, i'm Adrija! a <b>Kolkata</b> girl who now lives in <b>Bengaluru</b>, a software engineer by day, and someone whose head is permanently a little bit in the clouds.</p>
                     <p>lifelong learner, certified matcha-in-one-hand, book-in-the-other person. i write poetry, doodle, binge anime, manga and manhwa way past bedtime, make a playlist for every tiny mood, read birth charts and palms, and i'm learning Korean one hangul letter at a time (안녕!).</p>
                     <p>i've wandered through 20 Indian states and UTs, the UK, France, Switzerland, Germany and Belgium, and i'm nowhere near done. most weekends you'll find me hopping between cafés in Bengaluru, "just getting some work done" (i am not getting work done).</p>
-                    <p className="hand quote">"once you've met someone, you never really forget them." <span>· Zeniba</span></p>
+                    <p className="hand quote">"some days are for matcha, some days are for magic. most days are both." <span>· me, probably</span></p>
                 </Reveal>
             </div>
             <div className="stats">
