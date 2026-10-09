@@ -6,7 +6,7 @@ export default function Learning() {
     const { degree, schools, wins, certs, stack } = education;
     return (
         <section id="learning" className="section">
-            <SectionHead chapter="ch. 05" film="whisper of the heart" title="forever a <em>student</em>"
+            <SectionHead chapter="ch. 06" film="whisper of the heart" title="forever a <em>student</em>"
                 lede="Shizuku learned that you polish a rough stone slowly. I'm still polishing mine: one course, one certificate and one rabbit hole at a time." />
 
             <Reveal className="glass edu">

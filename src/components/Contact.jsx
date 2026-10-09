@@ -15,7 +15,7 @@ const socials = [
 export default function Contact() {
     return (
         <section id="hello" className="section hello">
-            <SectionHead chapter="ch. 07" film="my neighbour totoro" title="waiting at the bus stop<br>for your <em>message</em>"
+            <SectionHead chapter="ch. 08" film="my neighbour totoro" title="waiting at the bus stop<br>for your <em>message</em>"
                 lede="Want to talk code, books, travel or café recs? Totoro and I are waiting. Bring an umbrella." />
 
             <Reveal className="bus-stop">

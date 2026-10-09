@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Reveal, { SectionHead } from './Reveal';
 import { Pin } from './Icons';
 import { places } from '../data';
+import PlaceScene from '../art/Places';
+import { DoorFrame, DoorPanel } from '../art/WonderDoor';
 
 // Howl's castle door: turn the colour dial and the door opens somewhere new.
 function Dial({ idx, onPick }) {
@@ -37,7 +39,7 @@ export default function Travel() {
 
     return (
         <section id="travels" className="section">
-            <SectionHead chapter="ch. 04" film="howl's moving castle" title="a door that opens <em>anywhere</em>"
+            <SectionHead chapter="ch. 05" film="howl's moving castle" title="a door that opens <em>anywhere</em>"
                 lede="Turn the dial on Howl's door. I've lived in two cities, explored almost every state in India, and crossed over to the UK and Europe." />
 
             <div className="travel-grid">
@@ -47,13 +49,14 @@ export default function Travel() {
                         <AnimatePresence mode="wait">
                             <motion.div key={place.label} className="portal" style={{ '--place': place.color }}
                                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                                <span className="portal-label">{place.label}</span>
+                                <PlaceScene name={place.label} className="portal-scene" />
                             </motion.div>
                         </AnimatePresence>
                         <motion.span key={`door-${idx}`} className="door-panel" initial={{ rotateY: 0 }} animate={{ rotateY: -72 }}
                             transition={{ delay: 0.25, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
-                            <span className="door-knob" />
+                            <DoorPanel />
                         </motion.span>
+                        <DoorFrame />
                     </button>
                     <p className="hand door-hint">tap the door or turn the dial</p>
                 </Reveal>
@@ -69,8 +72,9 @@ export default function Travel() {
                     </AnimatePresence>
                     <div className="passport">
                         {places.map((p, i) => (
-                            <button key={p.label} className={`pstamp ${i === idx ? 'on' : ''}`} style={{ '--place': p.color, '--tilt': `${(i % 2 ? 1 : -1) * (4 + i * 2)}deg` }} onClick={() => setIdx(i)}>
-                                <span>{p.label}</span><small>{p.kind}</small>
+                            <button key={p.label} className={`pstamp ${i === idx ? 'on' : ''}`} style={{ '--place': p.color, '--tilt': `${(i % 2 ? 1 : -1) * (3 + i * 1.5)}deg` }}
+                                onClick={() => setIdx(i)} aria-label={p.label} title={p.label}>
+                                <PlaceScene name={p.label} className="pstamp-art" />
                             </button>
                         ))}
                     </div>

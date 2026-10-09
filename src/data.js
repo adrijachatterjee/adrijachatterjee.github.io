@@ -146,6 +146,7 @@ export const jijiLines = [
     'feed the soot sprites some konpeito. they get grumpy otherwise.',
     'matcha, latte or chai? she will say "yes".',
     'try night mode. that is when we fly.',
+    'Kiki has a cold. scroll down and help me with the deliveries?',
     'mrrp. hire her.',
     'i have read her code reviews. she is kinder than Yubaba.',
     'Calcifer keeps this site warm. please do not pour water on him.',

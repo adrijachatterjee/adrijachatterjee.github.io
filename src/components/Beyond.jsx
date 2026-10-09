@@ -17,7 +17,7 @@ const quests = [
 export default function Beyond() {
     return (
         <section id="side-quests" className="section">
-            <SectionHead chapter="ch. 06" film="princess mononoke" title="forest spirits &amp; <em>side quests</em>"
+            <SectionHead chapter="ch. 07" film="princess mononoke" title="forest spirits &amp; <em>side quests</em>"
                 lede="I collect hobbies the way Ghibli heroines collect tiny magical companions." />
 
             <Reveal className="glass seeker">

@@ -7,6 +7,7 @@ import { jijiLines } from '../data';
 export default function JijiCompanion() {
     const [line, setLine] = useState(null);
     const [n, setN] = useState(0);
+    const [mood, setMood] = useState('idle');
 
     useEffect(() => {
         const t = setTimeout(() => setLine('psst. tap me.'), 2500);
@@ -22,6 +23,8 @@ export default function JijiCompanion() {
     const talk = () => {
         setLine(jijiLines[n % jijiLines.length]);
         setN((x) => x + 1);
+        setMood('happy');
+        setTimeout(() => setMood('idle'), 900);
     };
 
     return (
@@ -36,7 +39,7 @@ export default function JijiCompanion() {
             </AnimatePresence>
             <motion.button className="jiji-btn" onClick={talk} aria-label="Talk to Jiji"
                 whileHover={{ y: -6, rotate: -3 }} whileTap={{ scale: 0.9, rotate: 4 }}>
-                <Jiji size={78} />
+                <Jiji size={78} mood={mood} />
             </motion.button>
         </div>
     );
