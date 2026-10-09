@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Totoro from '../art/Totoro';
 
-// Tap Totoro to play the official "My Neighbor Totoro" theme (Joe Hisaishi) via Spotify's
+// Tap Totoro to play "The Path of the Wind" from My Neighbor Totoro (Joe Hisaishi) via Spotify's
 // embed. Nothing loads from Spotify until someone taps.
-const TRACK = 'spotify:track:40h0Jk4gCU4VBMC9yQ6qLU';
+const TRACK = 'spotify:track:3XxnYdibSlBhiq2wGlQ6ie';
 
 function loadSpotify() {
     if (window.__spotifyApi) return Promise.resolve(window.__spotifyApi);
