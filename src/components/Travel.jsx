@@ -40,7 +40,7 @@ export default function Travel() {
     return (
         <section id="travels" className="section">
             <SectionHead chapter="ch. 06" film="howl's moving castle" title="a door that opens <em>anywhere</em>"
-                lede="Turn the dial on Howl's door. I've lived in two cities, explored 20 Indian states and UTs, and wandered through the UK, France, Switzerland, Germany and Belgium." />
+                lede="spin the dial on howl's door. two cities called home, 20 indian states & UTs, plus the UK, France, Switzerland, Germany and Belgium so far. my bucket list is longer than my reading list (which is saying something)." />
 
             <div className="travel-grid">
                 <Reveal className="howl-door-wrap">

@@ -360,7 +360,7 @@ export default function JijiGame({ night }) {
     return (
         <section id="play" className="section">
             <SectionHead chapter="ch. 05" film="a jiji side story" title="jiji's delivery <em>dash</em>"
-                lede="Kiki caught a cold after that rainy delivery, so Jiji is flying the broom today. Help him deliver as many parcels as he can." />
+                lede="plot twist: kiki caught a cold after that rainy delivery, so jiji's flying the broom today. pls help him, he's trying his best." />
 
             <Reveal>
                 <div className="game glass" ref={wrap}
@@ -381,12 +381,12 @@ export default function JijiGame({ night }) {
                             {phase === 'ready' ? (
                                 <>
                                     <h3>Jiji's Delivery Dash</h3>
-                                    <p>Hold (or press space) to fly up and let go to glide. Collect parcels, sip matcha, latte or chai for a shield, and dodge the crows and clock towers.</p>
+                                    <p>hold (or press space) to fly up, let go to glide. grab parcels, sip matcha, latte or chai for a shield, and dodge the crows + clock towers. the herring pie is worth 3. nobody likes it.</p>
                                 </>
                             ) : (
                                 <>
                                     <h3>{score >= best && score > 0 ? 'new best delivery run!' : 'Jiji needs a nap'}</h3>
-                                    <p>{score} deliveries made. {score >= 15 ? 'Osono would hire him full time.' : 'Kiki is proud of him anyway.'}</p>
+                                    <p>{score} deliveries made. {score >= 15 ? 'Osono would hire him full time ngl.' : 'kiki is proud of him anyway.'}</p>
                                 </>
                             )}
                             <button className="btn btn-solid" onClick={start} onPointerDown={(e) => e.stopPropagation()}>

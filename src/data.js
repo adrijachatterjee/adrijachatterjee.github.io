@@ -19,14 +19,14 @@ export const currentRole = {
     role: 'Software Development Engineer',
     company: 'Amazon',
     location: 'Bengaluru',
-    blurb: 'Building software at Amazon by day, then closing the laptop and going to find the next good café.',
+    blurb: 'building things at Amazon by day. then the laptop closes and the café map opens.',
 };
 
 export const projects = [
-    { name: 'StoryWall', blurb: 'A web app for writing and managing blogs, backed by a live JSON server.', tags: ['React', 'JSON Server'], url: 'https://github.com/adrijachatterjee/StoryWall' },
-    { name: 'Scribble Notes', blurb: 'An Android notes app where you can add, prioritise, sort and delete notes.', tags: ['Java', 'Android'], url: 'https://github.com/adrijachatterjee/Scribble-TheUltimateNotesJunction' },
-    { name: 'EasyBank', blurb: 'A responsive, interactive bank landing page that works well on mobile and desktop.', tags: ['HTML', 'SCSS', 'JavaScript'], url: 'https://github.com/adrijachatterjee/EasyBank-UI' },
-    { name: 'Birthday Wish', blurb: 'An animated birthday card made just for fun, live on Vercel.', tags: ['HTML', 'CSS', 'Animation'], url: 'https://happy-birthday-wish.vercel.app' },
+    { name: 'StoryWall', blurb: 'a cosy little home for writing blogs, powered by a live JSON server.', tags: ['React', 'JSON Server'], url: 'https://github.com/adrijachatterjee/StoryWall' },
+    { name: 'Scribble Notes', blurb: 'an android notes app for my chaotic brain: add, prioritise, sort, delete.', tags: ['Java', 'Android'], url: 'https://github.com/adrijachatterjee/Scribble-TheUltimateNotesJunction' },
+    { name: 'EasyBank', blurb: 'a bank landing page that looks cute on every screen size (yes, i tested them all).', tags: ['HTML', 'SCSS', 'JavaScript'], url: 'https://github.com/adrijachatterjee/EasyBank-UI' },
+    { name: 'Birthday Wish', blurb: 'an animated birthday card i made just for fun. it\'s live, go wish someone.', tags: ['HTML', 'CSS', 'Animation'], url: 'https://happy-birthday-wish.vercel.app' },
 ];
 
 export const education = {
@@ -50,18 +50,18 @@ export const education = {
 
 // Howl's door: each colour on the dial opens onto a different place.
 export const places = [
-    { color: '#e05a4f', label: 'Kolkata', kind: 'home, always', text: 'Where I grew up, went to school and college, and first fell in love with chai and books.' },
-    { color: '#5fa65a', label: 'Bengaluru', kind: 'home, now', text: 'Cafés, weekend rains and new corners of the city to explore. I wander all over it.' },
+    { color: '#e05a4f', label: 'Kolkata', kind: 'home, always', text: 'where i grew up, went to school and college, and fell in love with chai, books and long adda sessions.' },
+    { color: '#5fa65a', label: 'Bengaluru', kind: 'home, now', text: 'cafés, surprise rain and a new corner of the city every weekend. i wander all over it.' },
     {
         color: '#f2a03b', label: 'India', kind: '20 states & UTs, counting',
-        text: 'From Kashmir and Sikkim in the mountains, through Delhi and Uttar Pradesh, to Kerala and Tamil Nadu in the south, all across the Northeast, and out to the Andaman & Nicobar Islands.',
+        text: 'From Kashmir and Sikkim in the mountains, through Delhi and Uttar Pradesh, to Kerala and Tamil Nadu in the south, all across the Northeast, and out to the Andaman & Nicobar Islands. and yes, i have a list.',
         list: ['West Bengal', 'Delhi', 'Uttar Pradesh', 'Kashmir', 'Himachal Pradesh', 'Uttarakhand', 'Rajasthan', 'Maharashtra', 'Kerala', 'Tamil Nadu', 'Karnataka', 'Andhra Pradesh', 'Odisha', 'Sikkim', 'Arunachal Pradesh', 'Assam', 'Meghalaya', 'Jharkhand', 'Tripura', 'Andaman & Nicobar'],
     },
-    { color: '#3c5ba8', label: 'United Kingdom', kind: 'across the seas', text: 'A whole new kind of rainy day, with tea in hand, of course.' },
-    { color: '#6f8ff0', label: 'France', kind: 'bonjour', text: 'The Eiffel Tower on the skyline and café terraces on every corner. A café hopper\'s dream.' },
-    { color: '#4fb3c8', label: 'Switzerland', kind: 'grüezi', text: 'Snowy peaks, chalets and lakes so blue they look like a Ghibli background painting.' },
-    { color: '#a8652e', label: 'Germany', kind: 'hallo', text: 'Storybook old towns, timber-framed houses and very good pretzels.' },
-    { color: '#9b6bff', label: 'Belgium', kind: 'bonjour · hallo', text: 'Waffles, chocolate and the Atomium shining like something out of a sci-fi anime.' },
+    { color: '#3c5ba8', label: 'United Kingdom', kind: 'across the seas', text: 'a whole new kind of rainy day. tea in hand, obviously.' },
+    { color: '#6f8ff0', label: 'France', kind: 'bonjour', text: 'the Eiffel Tower on the skyline and a café on every corner. basically a theme park for café hoppers.' },
+    { color: '#4fb3c8', label: 'Switzerland', kind: 'grüezi', text: 'snowy peaks, chalets and lakes so blue they look like a ghibli background painting. unreal.' },
+    { color: '#a8652e', label: 'Germany', kind: 'hallo', text: 'storybook old towns, timber-framed houses and pretzels i still think about.' },
+    { color: '#9b6bff', label: 'Belgium', kind: 'bonjour · hallo', text: 'waffles, chocolate and the Atomium looking like it flew in from a sci-fi anime.' },
 ];
 
 // Café hopping! Add your favourite Bengaluru spots here and they'll show up on the loyalty card.

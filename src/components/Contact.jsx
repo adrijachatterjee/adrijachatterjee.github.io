@@ -5,12 +5,12 @@ import { GitHub, LinkedIn, Instagram, Mail, Quill } from './Icons';
 import { links } from '../data';
 
 const reasons = [
-    'just chat about anything',
+    'just chat about anything (or nothing)',
     'nerd out about tech',
     'get something coded or built',
-    'book a palm or birth chart reading',
-    'find a café-hopping buddy in Bengaluru',
-    'swap anime, manga or manhwa recs',
+    'get your palm or birth chart read',
+    'go café hopping in Bengaluru',
+    'swap anime, manga & manhwa recs',
 ];
 
 const socials = [
@@ -24,13 +24,13 @@ const socials = [
 export default function Contact() {
     return (
         <section id="hello" className="section hello">
-            <SectionHead chapter="ch. 09" film="my neighbour totoro" title="waiting at the bus stop<br>for your <em>message</em>"
-                lede="Honestly, I'm a bit of a jack of all trades (lol), so come say hi if you want to:" />
+            <SectionHead chapter="ch. 10" film="my neighbour totoro" title="waiting at the bus stop<br>for your <em>message</em>"
+                lede="ok so i'm kind of a jack of all trades (lol). hit me up if u wanna:" />
 
             <Reveal className="reasons">
                 {reasons.map((r, i) => <span key={r} className="reason" style={{ '--tilt': `${i % 2 ? 2 : -2}deg` }}>{r}</span>)}
             </Reveal>
-            <p className="hand reasons-foot">Totoro and I will be at the bus stop. Bring an umbrella.</p>
+            <p className="hand reasons-foot">totoro and i will be at the bus stop. bring an umbrella.</p>
 
             <Reveal>
                 <TotoroTune>

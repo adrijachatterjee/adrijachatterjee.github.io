@@ -7,7 +7,7 @@ export default function Learning() {
     return (
         <section id="learning" className="section">
             <SectionHead chapter="ch. 07" film="whisper of the heart" title="forever a <em>student</em>"
-                lede="Shizuku learned that you polish a rough stone slowly. I'm still polishing mine: one course, one certificate and one rabbit hole at a time." />
+                lede="shizuku learned that you polish a rough stone slowly. i'm still polishing mine: one course, one certificate and one 2am rabbit hole at a time." />
 
             <Reveal className="glass edu">
                 <div>

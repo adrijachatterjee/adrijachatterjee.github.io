@@ -24,23 +24,23 @@ export default function Hero() {
         <section className="hero" id="top">
             <FairyLights />
             <motion.p className="hand hero-hi" initial={{ opacity: 0, rotate: -12 }} animate={{ opacity: 1, rotate: -5 }} transition={{ delay: 0.2 }}>
-                hi there, i'm
+                heyy, i'm
             </motion.p>
             <h1 className="hero-name">
                 <Letters text="Adrija" className="name-first" delay={0.3} />
                 <Letters text="Chatterjee" className="name-last" delay={0.6} />
             </h1>
             <motion.p className="hero-tag" initial={{ y: 16 }} animate={{ y: 0 }} transition={{ delay: 0.4 }}>
-                software developer <Sparkle /> matcha, latte &amp; chai girlie <Sparkle /> wanderer <Sparkle /> stargazer &amp; palm reader
+                software developer <Sparkle /> café girlie <Sparkle /> wanderer <Sparkle /> stargazer &amp; palm reader
             </motion.p>
             <motion.p className="hero-sub" initial={{ y: 20 }} animate={{ y: 0 }} transition={{ delay: 0.5 }}>
-                Writing code at <strong>Amazon</strong> by day. The rest of the time I'm café hopping, travelling
-                and drifting through life like a Ghibli side character.
+                i write code at <strong>Amazon</strong> by day. the rest of the time (and lunch breaks, lol) i'm café hopping,
+                reading palms and living like a slightly chaotic ghibli side character.
             </motion.p>
             <motion.div className="hero-cta" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
-                <a href="#work" className="btn btn-solid">see my journey</a>
-                <a href="#cafe" className="btn btn-ghost">grab a cup with me</a>
-                <a href="#readings" className="btn btn-gold">get a reading</a>
+                <a href="#work" className="btn btn-solid">peek inside</a>
+                <a href="#cafe" className="btn btn-ghost">grab a cup w me</a>
+                <a href="#readings" className="btn btn-gold">let me read ur stars</a>
             </motion.div>
 
             <div className="hero-cups">

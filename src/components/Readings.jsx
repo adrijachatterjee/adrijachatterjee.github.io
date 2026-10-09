@@ -55,12 +55,12 @@ function VedicChart() {
                             </ul>
                             <p className="form-fine">
                                 Sidereal (Lahiri) positions{k.timeKnown ? '' : ', assuming noon since no birth time was given'}. Su Sun · Mo Moon · Ra Rahu · Ke Ketu.
-                                For a full kundli with your lagna and dashas, <a href="#hello">ask me for a reading</a>.
+                                want the full kundli with your lagna and dashas? <a href="#hello">come find me</a>, i love this stuff.
                             </p>
                         </motion.div>
                     ) : (
                         <motion.p key="hint" className="hand zodiac-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            in Jyotish, your moon sign says the most about you. let's find yours.
+                            in jyotish, your moon sign is the real tea. let's find yours.
                         </motion.p>
                     )}
                 </AnimatePresence>
@@ -185,7 +185,7 @@ function TarotGame() {
                             {question && <p className="tarot-q">“{question}”</p>}
                             {cards.map((c, i) => <p key={c.name}><b>{LABELS[i]} · {c.name}</b> {c.message}</p>)}
                             <p className="hand tarot-sum">
-                                {cards[0].name} behind you, {cards[1].name} with you, and {cards[2].name} ahead. Want the full story?
+                                {cards[0].name} behind you, {cards[1].name} with you, and {cards[2].name} ahead. want the full story?
                             </p>
                             <div className="tarot-actions">
                                 <a className="btn btn-gold" href="#hello">ask me for a real reading</a>
@@ -235,7 +235,7 @@ export default function Readings() {
     return (
         <section id="readings" className="section readings">
             <SectionHead chapter="ch. 03" film="a falling star (howl's moving castle)" title="the stars told me <em>so</em>"
-                lede="I'm an astrology and palmistry enthusiast, and I do readings. Pull a card, explore the lines of a palm, and peek at your Vedic chart." />
+                lede="yes, i'm the friend who asks for your birth time within five minutes of meeting you. i read palms and birth charts (for real). pull a card, poke at a palm, or peek at your vedic chart below." />
 
             <Reveal className="cosmos">
                 <div className="cosmos-stars" aria-hidden="true" />

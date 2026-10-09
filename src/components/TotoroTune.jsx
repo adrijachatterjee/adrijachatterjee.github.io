@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Totoro from '../art/Totoro';
 
 // Tap Totoro to play the official "My Neighbor Totoro" theme (Joe Hisaishi) via Spotify's
 // embed. Nothing loads from Spotify until someone taps.
@@ -49,7 +50,7 @@ export default function TotoroTune({ children }) {
             {children}
             <button className={`totoro-btn ${playing ? 'dancing' : ''}`} onClick={tap}
                 aria-label={playing ? 'Pause the Totoro theme' : 'Play the Totoro theme'}>
-                <img src="/art/totoro.png" alt="" className="totoro contact-totoro" width="170" height="248" />
+                <Totoro size={170} className="contact-totoro" />
                 <AnimatePresence>
                     {playing && [0, 1, 2, 3].map((i) => (
                         <motion.span key={i} className="music-note" style={{ left: `${20 + i * 20}%` }}

@@ -5,7 +5,8 @@ import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import About from './components/About';
-import Cafe from './components/Cafe';
+import Comfort from './components/Comfort';
+import Dessert from './components/Dessert';
 import Work from './components/Work';
 import Travel from './components/Travel';
 import JijiGame from './components/JijiGame';
@@ -33,14 +34,15 @@ export default function App() {
             <main>
                 <Hero />
                 <Marquee />
+                <Comfort />
                 <About />
-                <Cafe />
                 <Readings />
                 <Work />
                 <JijiGame night={night} />
                 <Travel />
                 <Learning />
                 <Beyond />
+                <Dessert />
                 <Contact />
             </main>
             <Footer />
