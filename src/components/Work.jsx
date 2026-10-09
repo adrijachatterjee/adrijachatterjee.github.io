@@ -8,7 +8,7 @@ export default function Work() {
     const [noFace, setNoFace] = useState(false);
     return (
         <section id="work" className="section">
-            <SectionHead chapter="ch. 03" film="kiki's delivery service" title="what i do <em>by day</em>"
+            <SectionHead chapter="ch. 04" film="kiki's delivery service" title="what i do <em>by day</em>"
                 lede="Like Kiki, I've learned that every new town (and every new codebase) takes a little courage and a lot of practice." />
 
             <Reveal className="glass t-item current now-role">

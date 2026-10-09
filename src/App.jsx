@@ -9,6 +9,7 @@ import Cafe from './components/Cafe';
 import Work from './components/Work';
 import Travel from './components/Travel';
 import JijiGame from './components/JijiGame';
+import Readings from './components/Readings';
 import Learning from './components/Learning';
 import Beyond from './components/Beyond';
 import Contact from './components/Contact';
@@ -34,6 +35,7 @@ export default function App() {
                 <Marquee />
                 <About />
                 <Cafe />
+                <Readings />
                 <Work />
                 <JijiGame night={night} />
                 <Travel />

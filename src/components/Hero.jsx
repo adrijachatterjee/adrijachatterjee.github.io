@@ -29,7 +29,7 @@ export default function Hero() {
                 <Letters text="Chatterjee" className="name-last" delay={0.6} />
             </h1>
             <motion.p className="hero-tag" initial={{ y: 16 }} animate={{ y: 0 }} transition={{ delay: 0.4 }}>
-                software developer <Sparkle /> matcha, latte &amp; chai girlie <Sparkle /> wanderer <Sparkle /> poet at heart
+                software developer <Sparkle /> matcha, latte &amp; chai girlie <Sparkle /> wanderer <Sparkle /> stargazer &amp; palm reader
             </motion.p>
             <motion.p className="hero-sub" initial={{ y: 20 }} animate={{ y: 0 }} transition={{ delay: 0.5 }}>
                 Writing code at <strong>Amazon</strong> by day. The rest of the time I'm café hopping, travelling
@@ -38,6 +38,7 @@ export default function Hero() {
             <motion.div className="hero-cta" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
                 <a href="#work" className="btn btn-solid">see my journey</a>
                 <a href="#cafe" className="btn btn-ghost">grab a cup with me</a>
+                <a href="#readings" className="btn btn-gold">get a reading</a>
             </motion.div>
 
             <div className="hero-cups">

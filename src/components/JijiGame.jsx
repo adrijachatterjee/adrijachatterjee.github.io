@@ -359,7 +359,7 @@ export default function JijiGame({ night }) {
 
     return (
         <section id="play" className="section">
-            <SectionHead chapter="ch. 04" film="a jiji side story" title="jiji's delivery <em>dash</em>"
+            <SectionHead chapter="ch. 05" film="a jiji side story" title="jiji's delivery <em>dash</em>"
                 lede="Kiki caught a cold after that rainy delivery, so Jiji is flying the broom today. Help him deliver as many parcels as he can." />
 
             <Reveal>

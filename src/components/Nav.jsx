@@ -1,6 +1,6 @@
 import { Moon, Sun } from './Icons';
 
-const items = [['about', 'about'], ['cafe', 'café'], ['work', 'work'], ['play', 'play'], ['travels', 'travels'], ['learning', 'learning'], ['side-quests', 'quests'], ['hello', 'say hi']];
+const items = [['about', 'about'], ['cafe', 'café'], ['readings', 'readings'], ['work', 'work'], ['play', 'play'], ['travels', 'travels'], ['side-quests', 'quests'], ['hello', 'say hi']];
 
 export default function Nav({ night, onToggle }) {
     return (

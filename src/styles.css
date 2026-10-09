@@ -124,7 +124,7 @@ em { font-style: italic; color: var(--accent); }
 }
 .nav-logo { font-family: var(--hand); font-size: 1.7rem; color: var(--accent); line-height: 1; }
 .nav-links { display: flex; gap: 2px; }
-.nav-links a { font-size: 0.85rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; transition: background 0.25s; }
+.nav-links a { white-space: nowrap; font-size: 0.85rem; font-weight: 600; padding: 6px 11px; border-radius: 999px; transition: background 0.25s; }
 .nav-links a:hover { background: var(--glass-border); }
 
 .theme-toggle { width: 58px; height: 32px; border-radius: 999px; background: linear-gradient(90deg, #ffe7a3, #a9d6f5); position: relative; transition: background 0.6s; }
@@ -232,7 +232,7 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
     box-shadow: 0 18px 40px rgba(60, 40, 90, 0.2); transition: transform 0.4s;
 }
 .polaroid:hover { transform: rotate(1deg) scale(1.02); }
-.polaroid img, .polaroid-art { display: block; width: 100%; aspect-ratio: 4 / 4.3; object-fit: cover; border-radius: 2px; }
+.polaroid img, .polaroid-art { display: block; width: 100%; aspect-ratio: 4 / 4.3; object-fit: cover; object-position: 48% 50%; border-radius: 2px; }
 .polaroid .hand { margin-top: 10px; text-align: center; font-size: 1.35rem; color: #6b5a8a; }
 .ls-cloud { animation: lsdrift 10s ease-in-out infinite alternate; }
 .ls-cloud-2 { animation-duration: 14s; animation-direction: alternate-reverse; }
@@ -484,7 +484,7 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .kodama-head { animation: rattle 3.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
 @keyframes rattle { 0%, 70%, 100% { transform: rotate(0); } 75% { transform: rotate(-18deg); } 82% { transform: rotate(14deg); } 89% { transform: rotate(-8deg); } }
 
-.quests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.quests { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .quest { position: relative; height: 100%; padding: 28px; display: flex; flex-direction: column; gap: 8px; }
 .quest p { font-size: 0.95rem; color: var(--ink-soft); }
 .quest-icon {
@@ -497,6 +497,8 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .q-poet { background: color-mix(in srgb, #cdb8ff 40%, var(--glass)); }
 .q-art { background: color-mix(in srgb, #ffb3c7 40%, var(--glass)); }
 .q-music { background: color-mix(in srgb, #b9f0d2 45%, var(--glass)); }
+.q-manga { background: color-mix(in srgb, #ffc4d6 45%, var(--glass)); }
+.q-manga:hover .quest-icon svg { animation: wiggle 0.6s ease-in-out infinite; }
 .q-books { background: color-mix(in srgb, #ffe08a 40%, var(--glass)); }
 .q-try { background: color-mix(in srgb, #a9dcff 45%, var(--glass)); }
 .q-creator { background: color-mix(in srgb, #ffc9a8 45%, var(--glass)); }
@@ -515,7 +517,7 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .hello { text-align: center; }
 .hello .lede { margin-left: auto; margin-right: auto; }
 .hello .section-head { display: flex; flex-direction: column; align-items: center; }
-.bus-stop { position: relative; height: 260px; max-width: 520px; margin: 0 auto 20px; overflow: hidden; border-radius: var(--radius); }
+.bus-stop { position: relative; height: 290px; max-width: 520px; margin: 0 auto 20px; overflow: hidden; border-radius: var(--radius); }
 .rain i {
     position: absolute; top: -20px; width: 2px; height: 18px; border-radius: 2px;
     background: color-mix(in srgb, var(--accent) 45%, transparent); animation: rain 1.1s linear infinite;
@@ -527,13 +529,23 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
     background: #fff8ec; border: 5px solid #d0566e; display: grid; place-items: center; text-align: center;
     font-family: var(--hand); font-size: 1.25rem; line-height: 1; color: #2a2440;
 }
-.contact-totoro { position: absolute; left: 50%; bottom: -6px; transform: translateX(-30%); }
-.totoro { transition: transform 0.4s; }
-.bus-stop:hover .totoro { animation: bounce 0.7s ease-in-out; }
-@keyframes bounce { 0%, 100% { transform: translateX(-30%); } 40% { transform: translateX(-30%) translateY(-24px) scale(1.03, 0.97); } }
+.totoro-btn { position: absolute; left: 50%; bottom: -8px; transform: translateX(-32%); z-index: 2; }
+.contact-totoro { display: block; }
+.totoro { transform-origin: 50% 100%; }
+.totoro-btn:hover .totoro { animation: bounce 0.7s ease-in-out; }
+.totoro-btn.dancing .totoro { animation: dance 0.9s ease-in-out infinite; }
+@keyframes bounce { 40% { transform: translateY(-16px) scale(1.03, 0.97); } }
+@keyframes dance { 0%, 100% { transform: rotate(-5deg) translateY(0); } 25% { transform: rotate(0) translateY(-10px); } 50% { transform: rotate(5deg) translateY(0); } 75% { transform: rotate(0) translateY(-10px); } }
+.totoro-grin { opacity: 0; transition: opacity 0.3s; }
+.dancing .totoro-grin, .totoro-btn:hover .totoro-grin { opacity: 1; }
+.dancing .totoro-smile, .totoro-btn:hover .totoro-smile { opacity: 0; }
 .totoro-eyes { animation: blink 4s infinite; transform-box: fill-box; transform-origin: center; }
-.totoro-leaf { animation: leaf 3s ease-in-out infinite; transform-box: fill-box; transform-origin: left bottom; }
-@keyframes leaf { 50% { transform: rotate(-8deg); } }
+.totoro-umbrella { transform-box: view-box; transform-origin: 178px 96px; animation: umbrella 4s ease-in-out infinite; }
+@keyframes umbrella { 50% { transform: rotate(-3deg); } }
+.music-note { position: absolute; top: 10%; color: var(--accent); pointer-events: none; }
+.totoro-hint { font-size: 1.3rem; margin-top: -6px; }
+.totoro-player { max-width: 420px; margin: 0 auto; height: 0; overflow: hidden; transition: height 0.5s ease; border-radius: 14px; }
+.totoro-player.open { height: 80px; margin-top: 12px; }
 .stop-soot { position: absolute; bottom: 10px; animation: hop 2s ease-in-out infinite; }
 .s-a { left: 8%; }
 .s-b { right: 10%; animation-delay: -0.7s; }
@@ -576,6 +588,133 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .jiji-startled .jiji-tail { animation: none; }
 @keyframes ear { 0%, 90%, 100% { transform: rotate(0); } 93% { transform: rotate(-14deg); } 96% { transform: rotate(4deg); } }
 
+/* ---------- readings ---------- */
+
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f6d68b, #e9b44c); color: #2a1f3d; box-shadow: 0 10px 26px rgba(233, 180, 76, 0.35); }
+.reading-cta { display: table; margin: 0 auto 26px; }
+.anchor { position: absolute; top: -110px; }
+
+.cosmos {
+    position: relative; overflow: hidden; margin-bottom: 22px; padding: 34px; border-radius: var(--radius);
+    background: radial-gradient(ellipse at 20% 0%, #3b2a78 0%, transparent 60%), radial-gradient(ellipse at 90% 100%, #5a2f6e 0%, transparent 55%), linear-gradient(160deg, #161338, #231a4e 60%, #2d1d52);
+    color: #f1eaff; box-shadow: 0 20px 50px rgba(20, 12, 50, 0.35); border: 1px solid rgba(233, 196, 106, 0.25);
+}
+.cosmos .eyebrow { color: #e9c46a; }
+.cosmos h3, .cosmos h4, .cosmos b { color: #fff6e0; }
+.cosmos-stars {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.7;
+    background-image:
+        radial-gradient(1.5px 1.5px at 12% 20%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 28% 70%, #fff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 46% 34%, #ffe9a8 50%, transparent 51%), radial-gradient(1px 1px at 64% 82%, #fff 50%, transparent 51%),
+        radial-gradient(2px 2px at 80% 16%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 90% 58%, #ffe9a8 50%, transparent 51%),
+        radial-gradient(1px 1px at 6% 88%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 56% 8%, #fff 50%, transparent 51%);
+    animation: twinkle 5s ease-in-out infinite;
+}
+@keyframes twinkle { 50% { opacity: 0.35; } }
+
+.zodiac { position: relative; display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: center; }
+.wheel-wrap { position: relative; width: 340px; height: 340px; }
+.wheel { width: 100%; height: 100%; overflow: visible; }
+.wheel-ring { fill: rgba(255, 255, 255, 0.04); stroke: #e9c46a; stroke-width: 1.5; }
+.wheel-inner { fill: rgba(10, 8, 40, 0.5); stroke: rgba(233, 196, 106, 0.5); stroke-width: 1; }
+.wheel-tick { stroke: rgba(233, 196, 106, 0.35); stroke-width: 1; }
+.wheel-star { fill: #fff6e0; opacity: 0.8; }
+.wheel-hit { fill: transparent; }
+.wheel-sign { cursor: pointer; outline: none; }
+.wheel-sign text { font-size: 17px; fill: #e9d8ff; text-anchor: middle; dominant-baseline: central; font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Apple Symbols', serif; transition: fill 0.3s; }
+.wheel-sign:hover text, .wheel-sign:focus-visible text { fill: #fff; }
+.wheel-sign.on text { fill: #e9c46a; font-size: 21px; }
+.wheel-sign.on .wheel-hit { fill: rgba(233, 196, 106, 0.16); }
+.wheel-pointer { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); border: 9px solid transparent; border-top: 14px solid #e9c46a; z-index: 2; }
+.wheel-center { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.wheel-glyph { font-size: 64px; color: #e9c46a; text-shadow: 0 0 24px rgba(233, 196, 106, 0.6); font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Apple Symbols', serif; }
+.wheel-center .hand { font-size: 3rem; color: #e9c46a; }
+
+.date-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+.date-field span, .form-grid span { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: #cbb8ff; font-weight: 700; }
+.cosmos input, .cosmos textarea {
+    font: inherit; color: #fff; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(233, 196, 106, 0.35);
+    border-radius: 12px; padding: 11px 14px; color-scheme: dark; width: 100%;
+}
+.cosmos input::placeholder, .cosmos textarea::placeholder { color: rgba(241, 234, 255, 0.45); }
+.cosmos input:focus, .cosmos textarea:focus { outline: 2px solid #e9c46a; outline-offset: 1px; }
+.date-field input { max-width: 240px; }
+.sign-meta { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: #e9c46a; }
+.sign-card h3 { font-size: 3rem; line-height: 1; margin: 4px 0; }
+.sign-traits { font-family: var(--hand); font-size: 1.5rem; color: #ffb3c7; }
+.sign-reading { list-style: none; margin-top: 14px; display: grid; gap: 8px; color: #ddd2f5; }
+.sign-reading b { margin-right: 6px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e9c46a; }
+.zodiac-hint { font-size: 1.6rem; color: #cbb8ff; }
+
+.tarot { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.tarot-ask { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; max-width: 520px; padding: 10px 0; }
+.tarot-ask label { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+.tarot-ask .hand { font-size: 1.6rem; color: #cbb8ff; }
+.tarot-stack { position: relative; height: 200px; display: grid; place-items: center; }
+.tarot-stack .mini { position: absolute; width: 84px; height: 132px; }
+.tarot-stack .hand { position: absolute; bottom: -6px; color: #cbb8ff; font-size: 1.4rem; }
+.tarot-back {
+    display: block; border-radius: 10px; border: 2px solid #e9c46a;
+    background: linear-gradient(160deg, #3b2a78, #1d1640);
+}
+.tarot-back-art {
+    position: absolute; inset: 6px; border-radius: 6px; border: 1px solid rgba(233, 196, 106, 0.6);
+    background: radial-gradient(circle at 50% 50%, rgba(233, 196, 106, 0.9) 0 6px, transparent 7px),
+                radial-gradient(circle at 50% 50%, transparent 0 16px, rgba(233, 196, 106, 0.5) 17px 18px, transparent 19px),
+                repeating-linear-gradient(45deg, rgba(233, 196, 106, 0.08) 0 6px, transparent 6px 12px);
+}
+.tarot-slots { display: flex; gap: 22px; justify-content: center; margin: 4px 0 14px; }
+.tarot-slot { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.tarot-card { position: relative; display: block; width: 104px; height: 164px; perspective: 800px; }
+.tarot-inner { position: absolute; inset: 0; transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); transform-style: preserve-3d; }
+.tarot-card.flipped .tarot-inner { transform: rotateY(180deg); }
+.tarot-inner .tarot-back, .tarot-front { position: absolute; inset: 0; backface-visibility: hidden; }
+.tarot-inner .tarot-back { opacity: 0.35; border-style: dashed; }
+.tarot-front {
+    transform: rotateY(180deg); border-radius: 10px; border: 2px solid #e9c46a; padding: 10px 6px;
+    background: linear-gradient(160deg, #fff6e0, #f3dfb4); color: #2a1f3d;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+}
+.tarot-motif { width: 56px; height: 56px; }
+.tarot-motif * { stroke: #8a5a20; }
+.tarot-name { font-family: var(--display); font-weight: 700; font-size: 1rem; line-height: 1.1; }
+.tarot-label { font-size: 1.3rem; color: #cbb8ff; }
+.tarot-hint { font-size: 1.45rem; color: #ffb3c7; margin-bottom: 10px; }
+.tarot-fan { position: relative; height: 170px; width: 100%; display: flex; justify-content: center; }
+.fan-card { position: absolute; bottom: 0; left: calc(50% - 38px); width: 76px; height: 120px; transform-origin: 50% 120%; cursor: pointer; padding: 0; }
+.fan-card:disabled { cursor: default; }
+.tarot-result { max-width: 640px; display: grid; gap: 8px; color: #ddd2f5; }
+.tarot-q { font-family: var(--display); font-style: italic; font-size: 1.4rem; color: #fff6e0; }
+.tarot-result b { color: #e9c46a; margin-right: 4px; }
+.tarot-sum { font-size: 1.5rem; color: #ffb3c7; margin-top: 6px; }
+.tarot-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+.cosmos .btn-ghost { background: rgba(255, 255, 255, 0.08); border-color: rgba(233, 196, 106, 0.35); color: #f1eaff; }
+
+.palm { position: relative; display: grid; grid-template-columns: 220px 1fr; gap: 30px; align-items: center; }
+.palm-svg { width: 220px; height: auto; }
+.palm-hand { fill: rgba(255, 233, 210, 0.1); stroke: rgba(233, 196, 106, 0.7); stroke-width: 1.6; stroke-linejoin: round; }
+.palm-line { cursor: pointer; outline: none; }
+.palm-hit { stroke: transparent; stroke-width: 16; fill: none; }
+.palm-stroke { stroke: #cbb8ff; stroke-width: 3; fill: none; stroke-linecap: round; transition: stroke 0.3s, filter 0.3s; }
+.palm-line.on .palm-stroke, .palm-line:focus-visible .palm-stroke { stroke: #e9c46a; stroke-width: 4; filter: drop-shadow(0 0 6px rgba(233, 196, 106, 0.9)); }
+.palm-info h4 { font-family: var(--display); font-size: 2rem; text-transform: lowercase; }
+.palm-info p { color: #ddd2f5; max-width: 460px; }
+
+.reading-form { position: relative; }
+.reading-form h3 { font-size: 2.2rem; }
+.form-sub { color: #ddd2f5; margin: 4px 0 18px; }
+.type-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.type-pill { padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(233, 196, 106, 0.4); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: background 0.3s, color 0.3s; }
+.type-pill input { position: absolute; opacity: 0; pointer-events: none; }
+.type-pill.on { background: #e9c46a; color: #2a1f3d; }
+.type-pill:focus-within { outline: 2px solid #e9c46a; outline-offset: 2px; }
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.form-grid label { display: flex; flex-direction: column; gap: 6px; }
+.form-grid .full { grid-column: 1 / -1; }
+.form-note { color: #ffb3c7; font-size: 1.3rem; margin-top: 10px; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.form-fine { margin-top: 12px; font-size: 0.78rem; color: rgba(241, 234, 255, 0.6); }
+
 /* ---------- jiji's game ---------- */
 
 .game { position: relative; height: 440px; overflow: hidden; padding: 0; user-select: none; touch-action: none; cursor: pointer; }
@@ -598,14 +737,19 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 
 /* ---------- responsive ---------- */
 
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
     .nav-links { display: none; }
+}
+
+@media (max-width: 960px) {
     .about-grid, .cafe-grid, .travel-grid { grid-template-columns: 1fr; }
     .polaroid { max-width: 320px; margin: 0 auto; }
     .stats { grid-template-columns: 1fr 1fr; }
     .about-row { grid-template-columns: 1fr; }
     .projects, .quests { grid-template-columns: 1fr 1fr; }
     .noface-spot { display: none; }
+    .zodiac { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .date-field { align-items: center; }
 }
 
 
@@ -626,6 +770,14 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
     .soot-hint { display: none; }
     .jiji-corner svg { width: 60px; height: 85px; }
     .game { height: 380px; }
+    .cosmos { padding: 24px 18px; }
+    .wheel-wrap { width: 280px; height: 280px; }
+    .palm { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .form-grid { grid-template-columns: 1fr; }
+    .tarot-slots { gap: 10px; }
+    .tarot-card { width: 92px; height: 146px; }
+    .fan-card { width: 56px; height: 90px; left: calc(50% - 28px); }
+    .sign-card h3 { font-size: 2.4rem; }
     .howl-door { transform: scale(0.85); }
     .jiji-bubble { right: 54px; bottom: 72px; max-width: 200px; font-size: 1.1rem; }
 }

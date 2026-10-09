@@ -17,6 +17,7 @@ export const Quill = (p) => <Icon {...p}><path d="M20 3C12 4 7 9 5 17l-1 4" /><p
 export const Palette = (p) => <Icon {...p}><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2 0-1.5-1.5-2 0-3.5 1-1 3-.5 4-.5a3 3 0 0 0 3-3C21 7 17 3 12 3Z" /><circle cx="7.5" cy="11" r="1.2" /><circle cx="10" cy="7" r="1.2" /><circle cx="15" cy="7.5" r="1.2" /></Icon>;
 export const Vinyl = (p) => <Icon {...p}><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3" /><path d="M12 5.5a6.5 6.5 0 0 1 6.5 6.5" opacity=".6" /></Icon>;
 export const Book = (p) => <Icon {...p}><path d="M3 5c3-1 6-1 9 1v14c-3-2-6-2-9-1Z" /><path d="M21 5c-3-1-6-1-9 1v14c3-2 6-2 9-1Z" /></Icon>;
+export const Manga = (p) => <Icon {...p}><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M4 10h9V3M13 10v11M13 15h7" /><path d="M16.5 5.5l.7 1.6 1.6.2-1.2 1.1.3 1.6-1.4-.8-1.4.8.3-1.6-1.2-1.1 1.6-.2Z" /></Icon>;
 export const Wand = (p) => <Icon {...p}><path d="M4 20 15 9" /><path d="M17 3v3M15.5 4.5h3M20 8v2M19 9h2M12 4v1.5M11.25 4.75h1.5" /></Icon>;
 export const Camera = (p) => <Icon {...p}><path d="M4 8h3l2-3h6l2 3h3v11H4Z" /><circle cx="12" cy="13" r="3.5" /></Icon>;
 export const Plane = (p) => <Icon {...p}><path d="M3 11 21 4l-7 17-3-7Z" /><path d="m11 14 10-10" /></Icon>;

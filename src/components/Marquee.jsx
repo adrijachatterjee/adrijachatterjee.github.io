@@ -1,6 +1,6 @@
 import Konpeito, { KONPEITO_COLORS } from '../art/Konpeito';
 
-const words = ['matcha', 'code', 'chai', 'poetry', 'café hopping', 'travel', 'lattes', 'keats', 'illustrations', 'playlists', 'night drives', 'pink floyd', 'soot sprites', 'trying new things'];
+const words = ['matcha', 'code', 'chai', 'poetry', 'café hopping', 'travel', 'lattes', 'keats', 'anime', 'manga', 'manhwa', 'illustrations', 'playlists', 'night drives', 'pink floyd', 'soot sprites', 'astrology', 'palmistry', 'tarot', 'trying new things'];
 
 export default function Marquee() {
     const row = words.map((w, i) => (

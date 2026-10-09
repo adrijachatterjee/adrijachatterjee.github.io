@@ -11,7 +11,7 @@ export const links = {
 // Drop images into /public/art and put their paths here (e.g. '/art/me.webp').
 // Anything left as null shows a hand-drawn illustration instead.
 export const art = {
-    portrait: null,
+    portrait: '/art/jiji-bath.jpg',
     cafes: [null, null, null],
 };
 
@@ -53,9 +53,9 @@ export const places = [
     { color: '#e05a4f', label: 'Kolkata', kind: 'home, always', text: 'Where I grew up, went to school and college, and first fell in love with chai and books.' },
     { color: '#5fa65a', label: 'Bengaluru', kind: 'home, now', text: 'Cafés, weekend rains and new corners of the city to explore. I wander all over it.' },
     {
-        color: '#f2a03b', label: 'India', kind: '18 states & UTs, counting',
-        text: 'From Kashmir and Sikkim in the mountains to Kerala and Tamil Nadu in the south, all across the Northeast, and out to the Andaman & Nicobar Islands.',
-        list: ['West Bengal', 'Kashmir', 'Himachal Pradesh', 'Uttarakhand', 'Rajasthan', 'Maharashtra', 'Kerala', 'Tamil Nadu', 'Karnataka', 'Andhra Pradesh', 'Odisha', 'Sikkim', 'Arunachal Pradesh', 'Assam', 'Meghalaya', 'Jharkhand', 'Tripura', 'Andaman & Nicobar'],
+        color: '#f2a03b', label: 'India', kind: '20 states & UTs, counting',
+        text: 'From Kashmir and Sikkim in the mountains, through Delhi and Uttar Pradesh, to Kerala and Tamil Nadu in the south, all across the Northeast, and out to the Andaman & Nicobar Islands.',
+        list: ['West Bengal', 'Delhi', 'Uttar Pradesh', 'Kashmir', 'Himachal Pradesh', 'Uttarakhand', 'Rajasthan', 'Maharashtra', 'Kerala', 'Tamil Nadu', 'Karnataka', 'Andhra Pradesh', 'Odisha', 'Sikkim', 'Arunachal Pradesh', 'Assam', 'Meghalaya', 'Jharkhand', 'Tripura', 'Andaman & Nicobar'],
     },
     { color: '#3c5ba8', label: 'United Kingdom', kind: 'across the seas', text: 'A whole new kind of rainy day, with tea in hand, of course.' },
     { color: '#6f8ff0', label: 'France', kind: 'bonjour', text: 'The Eiffel Tower on the skyline and café terraces on every corner. A café hopper\'s dream.' },
@@ -91,6 +91,8 @@ export const jijiLines = [
     'try night mode. that is when we fly.',
     'Kiki has a cold. scroll down and help me with the deliveries?',
     'mrrp. hire her.',
+    'she reads palms AND birth charts. i read the room. book one!',
+    'tap Totoro at the bus stop. he has a song.',
     '안녕! she is learning Korean, so i am too.',
     'i have read her code reviews. she is kinder than Yubaba.',
     'Calcifer keeps this site warm. please do not pour water on him.',

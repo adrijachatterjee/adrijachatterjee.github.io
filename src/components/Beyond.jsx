@@ -2,13 +2,14 @@ import { motion } from 'framer-motion';
 import Reveal, { SectionHead } from './Reveal';
 import Kodama from '../art/Kodama';
 import Lotus from '../art/Lotus';
-import { Quill, Palette, Vinyl, Book, Wand, Camera } from './Icons';
+import { Quill, Palette, Vinyl, Book, Wand, Camera, Manga } from './Icons';
 import { links } from '../data';
 
 const quests = [
     { Icon: Quill, cls: 'q-poet', title: 'the poet', text: 'I write musings, read Keats and keep a notebook of thoughts too big to say out loud.', link: [links.musings, '@musings_by_adrija'] },
     { Icon: Palette, cls: 'q-art', title: 'the doodler', text: 'Illustrations, doodles and a little graphic design. I\'m happiest when things look pretty.' },
     { Icon: Vinyl, cls: 'q-music', title: 'the playlist curator', text: 'Beatles for sunny days, Pink Floyd for night drives and Linkin Park forever.' },
+    { Icon: Manga, cls: 'q-manga', title: 'the otaku', text: 'A huge anime, manga and manhwa fan. Ghibli has my heart (clearly), and there is always a webtoon open in another tab.' },
     { Icon: Book, cls: 'q-books', title: 'the bookworm', text: 'Always reading something, with a stack of unread books waiting.' },
     { Icon: Wand, cls: 'q-try', title: 'trying stuff', text: 'New recipes, new skills, new aesthetics. If it sounds fun, I\'m in.' },
     { Icon: Camera, cls: 'q-creator', title: 'the creator', text: 'I share bits of life, jacarandas and moody skies with 14K+ lovely people.', link: [links.instagram, '@_adrija_chatterjee'] },
@@ -17,7 +18,7 @@ const quests = [
 export default function Beyond() {
     return (
         <section id="side-quests" className="section">
-            <SectionHead chapter="ch. 07" film="princess mononoke" title="forest spirits &amp; <em>side quests</em>"
+            <SectionHead chapter="ch. 08" film="princess mononoke" title="forest spirits &amp; <em>side quests</em>"
                 lede="I collect hobbies the way Ghibli heroines collect tiny magical companions." />
 
             <Reveal className="glass seeker">
