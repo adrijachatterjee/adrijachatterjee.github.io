@@ -131,9 +131,16 @@ export const education = {
 export const places = [
     { color: '#e05a4f', label: 'Kolkata', kind: 'home, always', text: 'Where I grew up, went to school and college, and first fell in love with chai and books.' },
     { color: '#5fa65a', label: 'Bengaluru', kind: 'home, now', text: 'Cafés, weekend rains and new corners of the city to explore. I wander all over it.' },
-    { color: '#f2b84b', label: 'India', kind: 'almost every state', text: 'From the mountains to the coasts, I have travelled through almost every state in the country.' },
-    { color: '#4b7fd1', label: 'United Kingdom', kind: 'crossed the seas', text: 'Across the seas to a whole new kind of rainy day, with tea in hand, of course.' },
-    { color: '#9b6bff', label: 'Europe', kind: 'a few countries & counting', text: 'A few countries down and a long list to go. The castle is already looking for the next door.' },
+    {
+        color: '#f2a03b', label: 'India', kind: '18 states & UTs, counting',
+        text: 'From Kashmir and Sikkim in the mountains to Kerala and Tamil Nadu in the south, all across the Northeast, and out to the Andaman & Nicobar Islands.',
+        list: ['West Bengal', 'Kashmir', 'Himachal Pradesh', 'Uttarakhand', 'Rajasthan', 'Maharashtra', 'Kerala', 'Tamil Nadu', 'Karnataka', 'Andhra Pradesh', 'Odisha', 'Sikkim', 'Arunachal Pradesh', 'Assam', 'Meghalaya', 'Jharkhand', 'Tripura', 'Andaman & Nicobar'],
+    },
+    { color: '#3c5ba8', label: 'United Kingdom', kind: 'across the seas', text: 'A whole new kind of rainy day, with tea in hand, of course.' },
+    { color: '#6f8ff0', label: 'France', kind: 'bonjour', text: 'The Eiffel Tower on the skyline and café terraces on every corner. A café hopper\'s dream.' },
+    { color: '#4fb3c8', label: 'Switzerland', kind: 'grüezi', text: 'Snowy peaks, chalets and lakes so blue they look like a Ghibli background painting.' },
+    { color: '#a8652e', label: 'Germany', kind: 'hallo', text: 'Storybook old towns, timber-framed houses and very good pretzels.' },
+    { color: '#9b6bff', label: 'Belgium', kind: 'bonjour · hallo', text: 'Waffles, chocolate and the Atomium shining like something out of a sci-fi anime.' },
 ];
 
 // Café hopping! Add your favourite Bengaluru spots here and they'll show up on the loyalty card.

@@ -9,7 +9,7 @@ const flower = (fill, edge) =>
         .map((a) => `<path d="${PETAL}" fill="${fill}" stroke="${edge}" stroke-width="0.6" transform="rotate(${a})"/>`)
         .join('')}<circle r="2.6" fill="#ffd36b"/></svg>`;
 
-// Leaves a trail of sakura blossoms that flutter down behind the cursor.
+// Leaves a light trail of sakura blossoms behind the cursor, and a soft ripple where you click.
 export default function CursorTrail() {
     useEffect(() => {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -18,19 +18,32 @@ export default function CursorTrail() {
         let lx = 0, ly = 0;
         const onMove = (e) => {
             const now = performance.now();
-            if (now - last < 45 || Math.hypot(e.clientX - lx, e.clientY - ly) < 12) return;
+            if (now - last < 110 || Math.hypot(e.clientX - lx, e.clientY - ly) < 30) return;
             last = now; lx = e.clientX; ly = e.clientY;
             const [fill, edge] = COLORS[Math.floor(Math.random() * COLORS.length)];
             const el = document.createElement('span');
-            const size = 12 + Math.random() * 10;
+            const size = 10 + Math.random() * 6;
             el.className = 'trail';
             el.innerHTML = flower(fill, edge);
             el.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;--dx:${Math.random() * 60 - 30}px;--dy:${50 + Math.random() * 60}px;--rot:${Math.random() * 360 - 180}deg`;
             document.body.appendChild(el);
             setTimeout(() => el.remove(), 1400);
         };
+        const onClick = (e) => {
+            if (e.target.closest('a, button, input, canvas, [role="button"], .game, .sprite')) return;
+            const el = document.createElement('span');
+            el.className = 'ripple';
+            el.style.cssText = `left:${e.clientX}px;top:${e.clientY}px`;
+            el.innerHTML = flower('#fff0f5', '#ffb3c7');
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+        };
         window.addEventListener('pointermove', onMove);
-        return () => window.removeEventListener('pointermove', onMove);
+        window.addEventListener('click', onClick);
+        return () => {
+            window.removeEventListener('pointermove', onMove);
+            window.removeEventListener('click', onClick);
+        };
     }, []);
     return null;
 }

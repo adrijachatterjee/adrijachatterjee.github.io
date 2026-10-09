@@ -52,6 +52,8 @@ body {
 
 :focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; border-radius: 12px; }
 
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
 ::selection { background: var(--accent-2); color: #fff; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
@@ -94,6 +96,17 @@ em { font-style: italic; color: var(--accent); }
     animation: trail 1.4s cubic-bezier(0.25, 0.6, 0.4, 1) forwards;
     filter: drop-shadow(0 2px 3px rgba(255, 120, 170, 0.3));
 }
+.ripple {
+    position: fixed; z-index: 999; pointer-events: none; width: 26px; height: 26px; transform: translate(-50%, -50%);
+    animation: bloomin 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.ripple::before {
+    content: ''; position: absolute; inset: -6px; border-radius: 50%;
+    border: 2px solid color-mix(in srgb, var(--accent-2) 70%, transparent);
+    animation: ring 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes bloomin { 0% { transform: translate(-50%, -50%) scale(0.2) rotate(-40deg); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate(-50%, -50%) scale(1) rotate(30deg); opacity: 0; } }
+@keyframes ring { from { transform: scale(0.4); opacity: 0.9; } to { transform: scale(2.6); opacity: 0; } }
 @keyframes trail {
     0% { transform: translate(-50%, -50%) scale(0.3) rotate(0); opacity: 0; }
     15% { transform: translate(-50%, -50%) scale(1) rotate(calc(var(--rot) * 0.2)); opacity: 1; }
@@ -392,9 +405,12 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .door-hint { margin-top: 48px; font-size: 1.35rem; }
 
 .place-card { padding: 30px; border-left: 6px solid var(--place); }
-.place-kind { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--place); }
+.place-kind { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--place) 72%, #2a2440); }
+[data-theme='night'] .place-kind { color: color-mix(in srgb, var(--place) 60%, #fff); }
 .place-card h3 { font-size: 2.6rem; margin: 4px 0 8px; }
 .place-card p { color: var(--ink-soft); }
+.state-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.state-chips span { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--place) 18%, transparent); color: color-mix(in srgb, var(--place) 60%, var(--ink)); }
 .passport { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
 .pstamp {
     width: 74px; height: 96px; padding: 5px; background: #fffaf2; border-radius: 4px;

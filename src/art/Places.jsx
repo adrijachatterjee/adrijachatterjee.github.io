@@ -70,24 +70,26 @@ export function Bengaluru() {
     );
 }
 
-// India: the Taj Mahal at dawn, reflected in its pool.
+// India: Himalayan peaks, a shikara on a lake and a string of prayer flags.
 export function India() {
+    const flags = ['#4b7fd1', '#fff8ec', '#e0525f', '#5fa65a', '#f2b84b'];
     return (
         <g>
-            <Sky id="sk-ind" from="#ffd6e6" to="#ffe9c7" />
-            <rect y="226" width="200" height="74" fill="#cfe9c9" />
-            <rect x="88" y="232" width="24" height="68" fill="#9fd3f5" />
-            <g fill="#fffaf0" stroke="#e2cfae" strokeWidth="1.5">
-                <rect x="30" y="218" width="140" height="10" />
-                <rect x="62" y="160" width="76" height="58" />
-                <path d="M74 160 C74 128 88 116 100 100 C112 116 126 128 126 160 Z" />
-                <path d="M62 160 C62 148 68 144 72 140 C76 144 82 148 82 160 Z" />
-                <path d="M118 160 C118 148 124 144 128 140 C132 144 138 148 138 160 Z" />
-                {[38, 156].map((x) => <rect key={x} x={x} y="140" width="7" height="78" />)}
-                {[38, 156].map((x) => <path key={`c${x}`} d={`M${x - 2} 140 Q${x + 3.5} 128 ${x + 9} 140 Z`} />)}
-            </g>
-            <path d="M100 100 v-10" stroke="#e2cfae" strokeWidth="2" />
-            <path d="M90 218 V190 Q100 176 110 190 V218" fill="#f1e4cc" />
+            <Sky id="sk-ind" from="#a9d6f5" to="#ffe6d6" />
+            <path d="M-10 200 L50 90 L80 130 L120 60 L160 120 L210 80 V220 H-10 Z" fill="#8fa3c8" />
+            <path d="M50 90 L62 112 L54 108 L44 118 Z M120 60 L136 88 L124 82 L112 92 Z M210 80 L196 104 L186 100 Z" fill="#fffaf0" />
+            <path d="M-10 214 Q60 180 120 206 T210 196 V230 H-10 Z" fill="#7cbf6a" />
+            <rect y="226" width="200" height="74" fill="#7fb3d6" />
+            <path d="M0 246 Q50 240 100 246 T200 246" stroke="#a9d0ea" strokeWidth="2" fill="none" />
+            <path d="M62 262 Q100 276 140 262 L134 270 Q100 280 68 270 Z" fill="#8a5a3a" />
+            <path d="M84 262 V246 H118 V262" fill="#e0525f" />
+            <path d="M80 246 H122 L116 240 H86 Z" fill="#f2b84b" />
+            <path d="M10 40 Q100 76 190 36" stroke="#6b4a2e" strokeWidth="1" fill="none" />
+            {Array.from({ length: 9 }, (_, i) => {
+                const x = 22 + i * 19;
+                const y = 44 + Math.sin((i / 8) * Math.PI) * 14;
+                return <rect key={i} x={x} y={y} width="11" height="13" fill={flags[i % 5]} transform={`rotate(${(i - 4) * 3} ${x} ${y})`} />;
+            })}
         </g>
     );
 }
@@ -121,41 +123,113 @@ export function UnitedKingdom() {
     );
 }
 
-// Europe: pastel gabled houses by a canal and a hot-air balloon.
-export function Europe() {
-    const houses = [
-        ['#ffb3c7', 30], ['#ffe08a', 34], ['#a9dcff', 30], ['#b9f0d2', 34], ['#cdb8ff', 30],
-    ];
-    let x = 8;
+// France: the Eiffel Tower over a café awning.
+export function France() {
     return (
         <g>
-            <Sky id="sk-eu" from="#c9b8ff" to="#ffe3d3" />
-            <g transform="translate(140 70)">
-                <path d="M-20 0 C-20 -28 20 -28 20 0 C20 14 6 22 4 30 H-4 C-6 22 -20 14 -20 0 Z" fill="#ff7eb3" />
-                <path d="M-8 -22 C-10 0 -4 18 -4 30 M8 -22 C10 0 4 18 4 30" stroke="#fff" strokeWidth="2" fill="none" opacity="0.7" />
-                <rect x="-6" y="34" width="12" height="9" rx="2" fill="#8a5a3a" />
-                <path d="M-4 30 L-5 34 M4 30 L5 34" stroke="#8a5a3a" strokeWidth="1.2" />
+            <Sky id="sk-fr" from="#cfe2ff" to="#ffe1ea" />
+            <rect y="250" width="200" height="50" fill="#e8dcc8" />
+            <g fill="none" stroke="#6b5a7a" strokeWidth="2.6" strokeLinejoin="round">
+                <path d="M100 40 L92 120 L70 250 M100 40 L108 120 L130 250" />
+                <path d="M86 150 L114 150 M80 190 L120 190 M90 120 H110" strokeWidth="4" />
+                <path d="M80 250 Q100 206 120 250" />
+                <path d="M94 120 L106 150 M106 120 L94 150 M86 150 L114 190 M114 150 L86 190" strokeWidth="1.2" />
             </g>
-            <rect y="244" width="200" height="56" fill="#7fb3d6" />
-            {houses.map(([c, w], i) => {
-                const hx = x;
-                x += w + 6;
-                const top = 150 + (i % 2) * 14;
-                return (
-                    <g key={i}>
-                        <path d={`M${hx} 244 V${top} h${w * 0.2} v-10 h${w * 0.2} v-10 h${w * 0.2} v10 h${w * 0.2} v10 h${w * 0.2} V244 Z`} fill={c} stroke="#fff" strokeWidth="1.5" />
-                        <rect x={hx + w * 0.3} y={top + 16} width={w * 0.4} height="12" fill="#fffaf0" />
-                        <rect x={hx + w * 0.3} y={top + 40} width={w * 0.4} height="12" fill="#fffaf0" />
-                        <rect x={hx + w * 0.35} y="226" width={w * 0.3} height="18" fill="#8a5a3a" />
-                    </g>
-                );
-            })}
-            <path d="M0 256 Q50 250 100 256 T200 256" stroke="#a9d0ea" strokeWidth="2" fill="none" />
+            <path d="M100 30 v12" stroke="#6b5a7a" strokeWidth="2" />
+            <g transform="translate(0 220)">
+                {[0, 1, 2, 3, 4].map((i) => <path key={i} d={`M${i * 40} 0 h40 v14 q-10 8 -20 0 q-10 8 -20 0 z`} fill={i % 2 ? '#fff8ec' : '#e0525f'} />)}
+            </g>
+            <circle cx="40" cy="262" r="9" fill="#fff8ec" stroke="#6b5a7a" strokeWidth="1.5" />
+            <path d="M40 271 v20 M32 291 h16" stroke="#6b5a7a" strokeWidth="2" />
+            <circle cx="160" cy="262" r="9" fill="#fff8ec" stroke="#6b5a7a" strokeWidth="1.5" />
+            <path d="M160 271 v20 M152 291 h16" stroke="#6b5a7a" strokeWidth="2" />
         </g>
     );
 }
 
-export const SCENES = { Kolkata, Bengaluru, India, 'United Kingdom': UnitedKingdom, Europe };
+// Switzerland: a snowy peak, a chalet and a very blue lake.
+export function Switzerland() {
+    return (
+        <g>
+            <Sky id="sk-ch" from="#8fcaf2" to="#e9f6ff" />
+            <path d="M20 220 L110 50 L150 120 L190 90 L230 220 Z" fill="#7e8fb0" />
+            <path d="M110 50 L132 92 L118 86 L106 100 L94 84 Z M190 90 L204 116 L192 112 Z" fill="#fffaf0" />
+            <path d="M-10 230 Q60 196 130 222 T210 214 V250 H-10 Z" fill="#8cc474" />
+            <rect y="244" width="200" height="56" fill="#4fb3c8" />
+            <path d="M0 262 Q50 256 100 262 T200 262" stroke="#a7e0ea" strokeWidth="2" fill="none" />
+            <g transform="translate(40 196)">
+                <rect x="0" y="12" width="40" height="30" fill="#c98648" />
+                <path d="M-6 14 L20 -4 L46 14 Z" fill="#8a5a3a" />
+                <rect x="6" y="20" width="9" height="9" fill="#fff8ec" /><rect x="25" y="20" width="9" height="9" fill="#fff8ec" />
+                <path d="M4 32 h32" stroke="#e0525f" strokeWidth="3" />
+            </g>
+            <g transform="translate(160 210)">
+                <rect x="-1" y="-30" width="2" height="34" fill="#6b4a2e" />
+                <rect x="1" y="-30" width="18" height="14" fill="#d6363f" />
+                <path d="M10 -27 v8 M6 -23 h8" stroke="#fff" strokeWidth="2.4" />
+            </g>
+        </g>
+    );
+}
+
+// Germany: timber-framed houses and a pretzel.
+export function Germany() {
+    const houses = [['#fff4e0', 0], ['#ffe0c9', 50], ['#fff8ec', 100], ['#f6e3c8', 150]];
+    return (
+        <g>
+            <Sky id="sk-de" from="#b9d8f2" to="#fff0dc" />
+            <rect y="250" width="200" height="50" fill="#c9b8a0" />
+            {houses.map(([c, x], i) => {
+                const top = 140 + (i % 2) * 16;
+                return (
+                    <g key={x}>
+                        <rect x={x + 2} y={top} width="46" height={250 - top} fill={c} />
+                        <path d={`M${x - 2} ${top} L${x + 25} ${top - 40} L${x + 52} ${top} Z`} fill={i % 2 ? '#c7563f' : '#a8452f'} />
+                        <g stroke="#6b4426" strokeWidth="2.2" fill="none">
+                            <path d={`M${x + 2} ${top + 30} H${x + 48} M${x + 2} ${top + 62} H${x + 48} M${x + 25} ${top} V250`} />
+                            <path d={`M${x + 2} ${top} L${x + 25} ${top + 30} L${x + 48} ${top} M${x + 2} ${top + 62} L${x + 25} ${top + 30} L${x + 48} ${top + 62}`} />
+                        </g>
+                        <rect x={x + 8} y={top + 70} width="10" height="12" fill="#a9dcff" />
+                        <rect x={x + 32} y={top + 70} width="10" height="12" fill="#a9dcff" />
+                    </g>
+                );
+            })}
+            <g transform="translate(100 272)" fill="none" stroke="#a8652e" strokeWidth="6" strokeLinecap="round">
+                <path d="M-14 6 C-30 -6 -18 -22 0 -8 C18 -22 30 -6 14 6 M-10 -4 L10 8 M10 -4 L-10 8" />
+            </g>
+        </g>
+    );
+}
+
+// Belgium: the Atomium and a waffle.
+export function Belgium() {
+    const balls = [[100, 70], [60, 110], [140, 110], [100, 150], [60, 190], [140, 190], [100, 230], [100, 150]];
+    return (
+        <g>
+            <Sky id="sk-be" from="#d6c8ff" to="#ffe3d3" />
+            <rect y="250" width="200" height="50" fill="#9fd48a" />
+            <g stroke="#b9c3d6" strokeWidth="5" fill="none">
+                <path d="M100 70 L100 230 M60 110 L140 190 M140 110 L60 190 M100 70 L60 110 L100 150 L140 110 Z M60 190 L100 230 L140 190 L100 150 Z" />
+                <path d="M100 230 L80 250 M100 230 L120 250" />
+            </g>
+            {balls.map(([x, y], i) => (
+                <g key={i}>
+                    <circle cx={x} cy={y} r="13" fill="#dfe6f2" stroke="#9aa6bd" strokeWidth="1.5" />
+                    <circle cx={x - 4} cy={y - 4} r="4" fill="#fff" opacity="0.8" />
+                </g>
+            ))}
+            <g transform="translate(40 266)">
+                <rect x="-18" y="-12" width="36" height="24" rx="4" fill="#e8b36e" />
+                <g stroke="#c98648" strokeWidth="2" fill="none">
+                    <path d="M-6 -12 V12 M6 -12 V12 M-18 0 H18" />
+                </g>
+                <path d="M-6 -14 q6 -8 12 0" fill="#fff8ec" />
+            </g>
+        </g>
+    );
+}
+
+export const SCENES = { Kolkata, Bengaluru, India, 'United Kingdom': UnitedKingdom, France, Switzerland, Germany, Belgium };
 
 export default function PlaceScene({ name, className = '', slice = true }) {
     const Scene = SCENES[name];

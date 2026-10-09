@@ -40,7 +40,7 @@ export default function Travel() {
     return (
         <section id="travels" className="section">
             <SectionHead chapter="ch. 05" film="howl's moving castle" title="a door that opens <em>anywhere</em>"
-                lede="Turn the dial on Howl's door. I've lived in two cities, explored almost every state in India, and crossed over to the UK and Europe." />
+                lede="Turn the dial on Howl's door. I've lived in two cities, explored 18 Indian states and UTs, and wandered through the UK, France, Switzerland, Germany and Belgium." />
 
             <div className="travel-grid">
                 <Reveal className="howl-door-wrap">
@@ -68,6 +68,7 @@ export default function Travel() {
                             <span className="place-kind"><Pin size={16} /> {place.kind}</span>
                             <h3>{place.label}</h3>
                             <p>{place.text}</p>
+                            {place.list && <div className="state-chips">{place.list.map((st) => <span key={st}>{st}</span>)}</div>}
                         </motion.div>
                     </AnimatePresence>
                     <div className="passport">

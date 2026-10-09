@@ -3,7 +3,7 @@ import * as THREE from 'three';
 
 // A dramatic, scroll-reactive Ghibli sky: the sun sets as you scroll, clouds glow with
 // the light, sakura petals swirl away from the cursor, and at night there are stars,
-// an aurora, fireflies and shooting stars. Click the sky for a burst of petals.
+// an aurora, fireflies and shooting stars. Kept deliberately sparse so it never competes with the content.
 
 const skyVert = /* glsl */ `
 varying vec2 vUv;
@@ -63,7 +63,7 @@ void main() {
     // god rays fanning out from the sun
     float ang = atan(p.y - lp.y, p.x - lp.x);
     float rays = pow(noise(vec2(ang * 7.0, uTime * 0.06)), 3.0) * exp(-d * 1.6);
-    col += lc * rays * 0.45 * (1.0 - uNight);
+    col += lc * rays * 0.16 * (1.0 - uNight);
 
     // layered painterly cloud banks lit by the sun
     vec2 cp = vec2(p.x * 1.4 + uTime * 0.012, p.y * 3.2) + uMouse * 0.04;
@@ -74,14 +74,14 @@ void main() {
     vec3 cloudLit = mix(vec3(1.0), vec3(1.0, .72, .62), smoothstep(0.45, 1.0, s));
     vec3 cloudCol = mix(cloudLit, vec3(.32, .28, .52), uNight);
     float rim = exp(-length(p - lp) * 2.0) * (1.0 - uNight);
-    col = mix(col, cloudCol + rim * lc * 0.4, bank * 0.6);
-    col = mix(col, cloudCol * 0.95, bank2 * 0.5);
+    col = mix(col, cloudCol + rim * lc * 0.4, bank * 0.32);
+    col = mix(col, cloudCol * 0.95, bank2 * 0.22);
 
     // aurora ribbons at night
     float ax = p.x * 1.1 + uTime * 0.025;
     float wave = 0.72 + 0.07 * sin(ax * 2.2 + fbm(vec2(ax, uTime * 0.08)) * 3.0);
     float aur = (1.0 - smoothstep(0.0, 0.14, abs(uv.y - wave))) * fbm(vec2(ax * 3.0, uv.y * 7.0 - uTime * 0.15));
-    col += uNight * aur * mix(vec3(.25, .95, .7), vec3(.75, .45, 1.0), uv.x) * 0.55;
+    col += uNight * aur * mix(vec3(.25, .95, .7), vec3(.75, .45, 1.0), uv.x) * 0.32;
 
     float vig = 1.0 - smoothstep(0.4, 1.3, length((uv - 0.5) * vec2(uAspect * 0.75, 1.0)));
     col *= mix(0.72, 1.0, vig);
@@ -177,7 +177,7 @@ export default function Sky3D({ night }) {
         const halfH = (z) => Math.tan(THREE.MathUtils.degToRad(30)) * (camera.position.z - z);
 
         // stars
-        const STARS = small ? 400 : 900;
+        const STARS = small ? 250 : 500;
         const sp = new Float32Array(STARS * 3);
         const ss = new Float32Array(STARS);
         for (let i = 0; i < STARS; i++) {
@@ -194,7 +194,7 @@ export default function Sky3D({ night }) {
         scene.add(new THREE.Points(starGeo, starMat));
 
         // fireflies
-        const FF = small ? 30 : 60;
+        const FF = small ? 12 : 24;
         const fp = new Float32Array(FF * 3);
         const fs = new Float32Array(FF);
         const ffBase = [];
@@ -216,7 +216,7 @@ export default function Sky3D({ night }) {
         // clouds
         const cloudTex = cloudTexture();
         const clouds = [];
-        for (let i = 0; i < (small ? 5 : 9); i++) {
+        for (let i = 0; i < (small ? 2 : 4); i++) {
             const mat = new THREE.SpriteMaterial({ map: cloudTex, transparent: true, depthWrite: false, opacity: 0.9 });
             const spr = new THREE.Sprite(mat);
             const z = -8 - Math.random() * 18;
@@ -229,7 +229,7 @@ export default function Sky3D({ night }) {
         }
 
         // sakura petals
-        const N = small ? 90 : 200;
+        const N = small ? 18 : 40;
         const petals = new THREE.InstancedMesh(petalGeometry(), new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: true, opacity: 0.95, depthWrite: false }), N);
         const palette = ['#ffc4d6', '#ffb0c8', '#ffe3ec', '#ffd1dc', '#f7a8c4', '#fff0f5'].map((c) => new THREE.Color(c));
         const P = [];
@@ -269,28 +269,11 @@ export default function Sky3D({ night }) {
         const mouse = new THREE.Vector2(0, 0);
         const mouseS = new THREE.Vector2(0, 0);
         let mouseActive = false;
-        let burstAt = 0;
         const onMove = (e) => {
             mouse.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
             mouseActive = true;
         };
-        const onClick = (e) => {
-            if (e.target.closest('a, button, input, canvas, .glass, .loyalty, .polaroid, [role="button"]')) return;
-            const nx = (e.clientX / window.innerWidth) * 2 - 1;
-            const ny = -(e.clientY / window.innerHeight) * 2 + 1;
-            for (let k = 0; k < 36; k++) {
-                const p = P[(burstAt + k) % N];
-                const h = halfH(p.z);
-                p.x = nx * h * camera.aspect; p.y = ny * h;
-                const a = Math.random() * Math.PI * 2;
-                const v = 2.5 + Math.random() * 4;
-                p.kx = Math.cos(a) * v; p.ky = Math.sin(a) * v;
-            }
-            burstAt = (burstAt + 36) % N;
-            if (nightRef.current > 0.5) launchShooter();
-        };
         window.addEventListener('pointermove', onMove);
-        window.addEventListener('click', onClick);
 
         const resize = () => {
             const w = window.innerWidth, h = window.innerHeight;
@@ -349,11 +332,11 @@ export default function Sky3D({ night }) {
                 const lim = halfH(c.position.z) * camera.aspect + c.scale.x;
                 if (c.position.x > lim) c.position.x = -lim;
                 c.material.color.copy(tint);
-                c.material.opacity = 0.85 - nightV * 0.45;
+                c.material.opacity = 0.55 - nightV * 0.3;
             }
 
             // petals: wind + sway + cursor swirl
-            petals.material.opacity = 0.95 - nightV * 0.55;
+            petals.material.opacity = 0.85 - nightV * 0.5;
             for (let i = 0; i < N; i++) {
                 const p = P[i];
                 const h = halfH(p.z);
@@ -415,7 +398,6 @@ export default function Sky3D({ night }) {
             running = false;
             cancelAnimationFrame(raf);
             window.removeEventListener('pointermove', onMove);
-            window.removeEventListener('click', onClick);
             window.removeEventListener('resize', resize);
             document.removeEventListener('visibilitychange', onVis);
             scene.traverse((o) => { o.geometry?.dispose(); o.material?.dispose?.(); });

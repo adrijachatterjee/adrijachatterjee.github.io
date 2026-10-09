@@ -368,7 +368,8 @@ export default function JijiGame({ night }) {
                     <canvas ref={canvas} className="game-canvas" />
                     <div className="game-hud">
                         <span className="hud-score">deliveries: <b>{score}</b></span>
-                        <span className="hud-lives" aria-label={`${lives} lives`}>
+                        <span className="hud-lives">
+                            <span className="sr-only">{lives} lives left</span>
                             {[0, 1, 2].map((i) => <i key={i} className={i < lives ? 'on' : ''} />)}
                         </span>
                         <span className="hud-best">best: {best}</span>
