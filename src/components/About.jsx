@@ -4,8 +4,8 @@ import Landscape from '../art/Landscape';
 import { art, languages, now } from '../data';
 
 const stats = [
-    ['9.75', 'B.Tech CGPA'],
-    ['3+ yrs', 'building software'],
+    ['18', 'Indian states & UTs explored'],
+    ['6', 'countries wandered'],
     ['∞', 'cups of matcha, latte & chai'],
     ['4', 'languages, one in progress'],
 ];
@@ -20,8 +20,9 @@ export default function About() {
                     <p className="hand">somewhere between Kolkata & Bengaluru</p>
                 </Reveal>
                 <Reveal className="glass about-text" delay={0.1}>
-                    <p>I'm a software developer from <b>Kolkata</b>, now living in <b>Bengaluru</b>. I did my B.Tech in Computer Science &amp; Engineering and started at Amazon as an SDE intern on Amazon Music. After that I worked on robotics simulations at Spacewalk and HPC workload management (PBS Pro) at Altair. In 2025 I came back to Amazon full time.</p>
-                    <p>I'm a lifelong learner, and I'm happiest with a matcha in one hand and a book in the other. I've travelled through 18 Indian states and UTs, the UK, France, Switzerland, Germany and Belgium. On weekends I'm usually exploring a new café somewhere in Bengaluru.</p>
+                    <p>I'm Adrija: a <b>Kolkata</b> girl living in <b>Bengaluru</b>, a software development engineer at <b>Amazon</b>, and someone who's always a little bit in the clouds.</p>
+                    <p>I'm a lifelong learner, happiest with a matcha in one hand and a book in the other. I write poetry, doodle, make a playlist for every mood, and I'm learning Korean one hangul letter at a time.</p>
+                    <p>I've wandered through 18 Indian states and UTs, the UK, France, Switzerland, Germany and Belgium. Most weekends you'll find me hopping between cafés in Bengaluru.</p>
                     <p className="hand quote">"once you've met someone, you never really forget them." <span>· Zeniba</span></p>
                 </Reveal>
             </div>

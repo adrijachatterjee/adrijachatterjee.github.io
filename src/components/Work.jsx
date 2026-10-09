@@ -2,33 +2,23 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Reveal, { SectionHead } from './Reveal';
 import NoFace from '../art/NoFace';
-import { experience, projects } from '../data';
+import { currentRole, projects, links } from '../data';
 
 export default function Work() {
     const [noFace, setNoFace] = useState(false);
     return (
         <section id="work" className="section">
-            <SectionHead chapter="ch. 03" film="kiki's delivery service" title="delivering <em>code</em> since 2020"
+            <SectionHead chapter="ch. 03" film="kiki's delivery service" title="what i do <em>by day</em>"
                 lede="Like Kiki, I've learned that every new town (and every new codebase) takes a little courage and a lot of practice." />
 
-            <ol className="timeline">
-                {experience.map((job, i) => (
-                    <Reveal as="li" key={job.company + job.date} className={`glass t-item ${job.current ? 'current' : ''}`} delay={0.05}>
-                        <span className={`postmark ${job.current ? 'live' : ''}`}>{job.current ? 'in flight' : 'delivered'}</span>
-                        <div className="t-meta">
-                            <span className="t-date">{job.date}</span>
-                            <span className="pill">{job.type}</span>
-                        </div>
-                        <h3>{job.role} <span className="at">@ {job.company}</span></h3>
-                        {job.location && <p className="t-loc">{job.location}</p>}
-                        <ul className="t-points">
-                            {job.points.map((p, j) => <li key={j} dangerouslySetInnerHTML={{ __html: p }} />)}
-                        </ul>
-                        {job.tags.length > 0 && <div className="t-tags">{job.tags.map((t) => <span key={t}>{t}</span>)}</div>}
-                        <p className="t-note hand">{job.note}</p>
-                    </Reveal>
-                ))}
-            </ol>
+            <Reveal className="glass t-item current now-role">
+                <span className="postmark live">in flight</span>
+                <div className="t-meta"><span className="pill">currently</span></div>
+                <h3>{currentRole.role} <span className="at">@ {currentRole.company}</span></h3>
+                <p className="t-loc">{currentRole.location}</p>
+                <p className="now-role-blurb">{currentRole.blurb}</p>
+                <a className="hand role-link" href={links.linkedin} target="_blank" rel="noopener noreferrer">the full flight log is on LinkedIn →</a>
+            </Reveal>
 
             <div className="noface-spot" onMouseEnter={() => setNoFace(true)} onMouseLeave={() => setNoFace(false)} onClick={() => setNoFace((v) => !v)}>
                 <NoFace size={58} />

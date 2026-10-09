@@ -15,91 +15,12 @@ export const art = {
     cafes: [null, null, null],
 };
 
-export const experience = [
-    {
-        date: 'Apr 2025 — present',
-        type: 'full time',
-        current: true,
-        role: 'Software Development Engineer',
-        company: 'Amazon',
-        location: 'Bengaluru',
-        points: ['Back where it all started, now as a full-time SDE building at Amazon scale.'],
-        tags: [],
-        note: 'the broom came back home',
-    },
-    {
-        date: 'Oct 2023 — Mar 2025',
-        type: 'full time',
-        role: 'Software Development Engineer',
-        company: 'Altair Engineering',
-        points: [
-            'Worked on core development and maintenance of <b>PBS Pro</b> in C and C++, improving system stability and cutting downtime by 25%.',
-            'Built a React frontend for PBS Pro\'s workload manager on top of REST APIs.',
-            'Wrote Shell and Bash CLI scripts that simplified end-user workflows by 80%.',
-            'Fixed Linux performance bottlenecks for a 20% boost in responsiveness, and used Python automation to improve cross-platform compatibility by 30%.',
-        ],
-        tags: ['C', 'C++', 'Python', 'Linux', 'Bash', 'PBS Pro', 'React'],
-        note: 'kept HPC clusters burning bright, Calcifer style',
-    },
-    {
-        date: 'Jul 2023 — Sep 2023',
-        type: 'full time',
-        role: 'SDE, Embedded Systems',
-        company: 'Spacewalk Automation',
-        points: [
-            'Designed and simulated robotic systems in ROS and Gazebo using URDF and STL models.',
-            'Optimised C++ and XML launch files to streamline simulation workflows on Linux.',
-        ],
-        tags: ['ROS', 'Gazebo', 'C++', 'CMake', 'Python'],
-        note: 'built robots gentler than the ones in Laputa',
-    },
-    {
-        date: 'Jan 2023 — Jun 2023',
-        type: 'internship',
-        role: 'SDE Intern',
-        company: 'Amazon',
-        location: 'Bengaluru · Amazon Music',
-        points: [
-            'Fixed UI issues in the <b>Amazon Music</b> Android app with Kotlin and Java, improving user experience by 19%.',
-            'Helped build the <b>Lyrics Sharing</b> feature and launched it behind a feature gate to 5% of users.',
-        ],
-        tags: ['Kotlin', 'Java', 'Android'],
-        note: 'my first flight on the broom',
-    },
-    {
-        date: 'Feb 2022 — Jul 2022',
-        type: 'internship',
-        role: 'Full-Stack Developer',
-        company: 'Steel Authority of India (ISP)',
-        points: [
-            'Designed RMM portal screens in Figma and built them in ASP.NET and VB.NET.',
-            'Optimised the Oracle DB schema, cutting query response times by 20%.',
-        ],
-        tags: ['Figma', 'ASP.NET', 'VB.NET', 'Oracle'],
-        note: 'nerves of steel (literally)',
-    },
-    {
-        date: 'Dec 2021 — Mar 2022',
-        type: 'internship',
-        role: 'Front End Developer',
-        company: 'Techwishes Solutions',
-        points: [
-            'Redesigned the <b>Wonderhood</b> website with React, Next.js and GraphQL, increasing page reach by 70%.',
-            'Built Shopify store features in JavaScript and jQuery, hosted on AWS.',
-        ],
-        tags: ['React', 'Next.js', 'GraphQL', 'Shopify', 'AWS'],
-        note: 'first real delivery',
-    },
-    {
-        date: 'Sep 2020 — Dec 2020',
-        type: 'campus',
-        role: 'Campus Ambassador',
-        company: 'Internshala',
-        points: ['Introduced fellow students to Internshala courses (with discounts!) and picked up some goodies along the way.'],
-        tags: [],
-        note: 'where it all began',
-    },
-];
+export const currentRole = {
+    role: 'Software Development Engineer',
+    company: 'Amazon',
+    location: 'Bengaluru',
+    blurb: 'Building software at Amazon by day, then closing the laptop and going to find the next good café.',
+};
 
 export const projects = [
     { name: 'StoryWall', blurb: 'A web app for writing and managing blogs, backed by a live JSON server.', tags: ['React', 'JSON Server'], url: 'https://github.com/adrijachatterjee/StoryWall' },
