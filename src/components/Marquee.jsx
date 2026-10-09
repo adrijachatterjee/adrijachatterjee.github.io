@@ -1,16 +1,18 @@
-const words = ['matcha', 'code', 'chai', 'poetry', 'café hopping', 'travel', 'coffee', 'keats', 'anime', 'manga', 'manhwa', 'illustrations', 'playlists', 'night drives', 'pink floyd', 'soot sprites', 'astrology', 'palmistry', 'tarot', 'trying new things'];
-const colors = ['#ffb3c7', '#ffe08a', '#b9f0d2', '#cdb8ff', '#a9dcff', '#ffc9a8'];
+import { Sparkle } from './Icons';
 
-// A string of festive bunting that drifts sideways, each pennant swaying on the rope.
+const words = ['matcha', 'code', 'chai', 'poetry', 'café hopping', 'travel', 'coffee', 'keats', 'anime', 'manga', 'manhwa', 'illustrations', 'playlists', 'night drives', 'pink floyd', 'soot sprites', 'astrology', 'palmistry', 'tarot', 'trying new things'];
+
+// A soft, drifting ribbon of words with little twinkling sparkles in between.
 export default function Marquee() {
     const row = words.map((w, i) => (
-        <span key={i} className="flag" style={{ '--c': colors[i % colors.length], '--d': `${(i % 5) * -0.6}s` }}>
-            <span>{w}</span>
+        <span key={i} className="mq-item" style={{ '--d': `${(i % 6) * -0.7}s` }}>
+            <span className="mq-word">{w}</span>
+            <Sparkle size={12} className="mq-spark" />
         </span>
     ));
     return (
-        <div className="bunting" aria-hidden="true">
-            <div className="bunting-track"><div className="bunting-row">{row}</div><div className="bunting-row">{row}</div></div>
+        <div className="ribbon" aria-hidden="true">
+            <div className="ribbon-track"><div className="ribbon-row">{row}</div><div className="ribbon-row">{row}</div></div>
         </div>
     );
 }
