@@ -234,7 +234,7 @@ function PalmMap() {
 export default function Readings() {
     return (
         <section id="readings" className="section readings">
-            <SectionHead chapter="ch. 03" film="a falling star (howl's moving castle)" title="the stars told me <em>so</em>"
+            <SectionHead chapter="ch. 04" film="a falling star (howl's moving castle)" title="the stars told me <em>so</em>"
                 lede="yes, i'm the friend who asks for your birth time within five minutes of meeting you. i read palms and birth charts (for real). pull a card, poke at a palm, or peek at your vedic chart below." />
 
             <Reveal className="cosmos">

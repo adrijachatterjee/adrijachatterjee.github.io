@@ -1,4 +1,4 @@
-const words = ['matcha', 'code', 'chai', 'poetry', 'café hopping', 'travel', 'lattes', 'keats', 'anime', 'manga', 'manhwa', 'illustrations', 'playlists', 'night drives', 'pink floyd', 'soot sprites', 'astrology', 'palmistry', 'tarot', 'trying new things'];
+const words = ['matcha', 'code', 'chai', 'poetry', 'café hopping', 'travel', 'coffee', 'keats', 'anime', 'manga', 'manhwa', 'illustrations', 'playlists', 'night drives', 'pink floyd', 'soot sprites', 'astrology', 'palmistry', 'tarot', 'trying new things'];
 const colors = ['#ffb3c7', '#ffe08a', '#b9f0d2', '#cdb8ff', '#a9dcff', '#ffc9a8'];
 
 // A string of festive bunting that drifts sideways, each pennant swaying on the rope.

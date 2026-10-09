@@ -77,7 +77,7 @@ export const languages = [
 ];
 
 export const now = [
-    ['building', 'software at Amazon, Bengaluru'],
+    ['building', 'software (and a lot of side quests)'],
     ['learning', 'Korean, one hangul letter at a time'],
     ['sipping', 'matcha (this week, at least)'],
     ['exploring', 'a new café every weekend'],
@@ -87,7 +87,7 @@ export const jijiLines = [
     'psst. she codes, writes poetry AND travels. i am just a cat.',
     'Kiki delivers bread. Adrija delivers features.',
     'feed the soot sprites some konpeito. they get grumpy otherwise.',
-    'matcha, latte or chai? she will say "yes".',
+    'matcha, coffee or chai? she will say "yes".',
     'try night mode. that is when we fly.',
     'Kiki has a cold. scroll down and help me with the deliveries?',
     'mrrp. hire her.',

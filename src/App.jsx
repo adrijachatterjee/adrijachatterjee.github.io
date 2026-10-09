@@ -36,8 +36,8 @@ export default function App() {
                 <Marquee />
                 <Comfort />
                 <About />
-                <Readings />
                 <Work />
+                <Readings />
                 <JijiGame night={night} />
                 <Travel />
                 <Learning />

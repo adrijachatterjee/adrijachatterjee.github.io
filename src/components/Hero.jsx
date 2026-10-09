@@ -34,7 +34,7 @@ export default function Hero() {
                 software developer <Sparkle /> café girlie <Sparkle /> wanderer <Sparkle /> stargazer &amp; palm reader
             </motion.p>
             <motion.p className="hero-sub" initial={{ y: 20 }} animate={{ y: 0 }} transition={{ delay: 0.5 }}>
-                i write code at <strong>Amazon</strong> by day. the rest of the time (and lunch breaks, lol) i'm café hopping,
+                i write code by day. the rest of the time (and lunch breaks, lol) i'm café hopping,
                 reading palms and living like a slightly chaotic ghibli side character.
             </motion.p>
             <motion.div className="hero-cta" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>

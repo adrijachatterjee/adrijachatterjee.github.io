@@ -10,7 +10,7 @@ const mix = (a, b, t) => {
 // ---------- drinks ----------
 
 export const DRINK = {
-    base: [['matcha', '#86b84f'], ['latte', '#b07d55'], ['chai', '#bf7840'], ['hojicha', '#9a6340'], ['mocha', '#6e4532']],
+    base: [['matcha', '#86b84f'], ['coffee', '#b07d55'], ['chai', '#bf7840'], ['hojicha', '#9a6340'], ['mocha', '#6e4532']],
     milk: [['whole', '#fff4e6', 0.32], ['oat', '#f1e2c6', 0.36], ['almond', '#f6eadb', 0.3], ['coconut', '#fffaf2', 0.42], ['no milk', '#ffffff', 0]],
     temp: ['hot', 'iced'],
     toppings: ['latte art', 'whipped cream', 'cinnamon', 'boba', 'sakura', 'honey'],

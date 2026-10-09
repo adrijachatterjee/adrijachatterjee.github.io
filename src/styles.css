@@ -366,9 +366,15 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
 .cafe-notes { padding: 30px; }
 .cafe-notes.slim { padding: 22px 28px; }
 
-.howl-wrap { position: relative; display: flex; justify-content: flex-end; align-items: flex-end; height: 230px; margin: -40px 0 -6px; pointer-events: none; }
-.howl { width: 380px; height: auto; filter: drop-shadow(0 12px 20px rgba(60, 40, 90, 0.25)); -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
-.howl-bubble { position: absolute; right: 360px; top: 30px; white-space: normal; max-width: 260px; font-size: 1.3rem; pointer-events: auto; }
+.howl-wrap { position: relative; display: flex; justify-content: flex-end; align-items: flex-end; height: 240px; margin: -40px 0 -6px; pointer-events: none; }
+.howl {
+    width: 440px; height: auto; filter: drop-shadow(0 12px 20px rgba(60, 40, 90, 0.25));
+    -webkit-mask-image: linear-gradient(#000 72%, transparent), linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(#000 72%, transparent), linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+    mask-composite: intersect;
+}
+.howl-bubble { position: absolute; right: 420px; top: 30px; white-space: normal; max-width: 260px; font-size: 1.3rem; pointer-events: auto; }
 .howl-bubble::after { content: ''; position: absolute; right: -8px; top: 24px; border: 9px solid transparent; border-left-color: #fff; border-right: 0; }
 .dessert-builder { display: grid; grid-template-columns: 1fr 1.1fr; gap: 26px; align-items: center; }
 .dessert-builder .builder-art { height: 260px; }
@@ -802,9 +808,9 @@ h3 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-hei
     .soot-hint { display: none; }
     .jiji-corner svg { width: 60px; height: 86px; }
     .game { height: 380px; }
-    .howl-wrap { height: 170px; margin-top: -20px; }
-    .howl { width: 250px; }
-    .howl-bubble { right: auto; left: 0; top: -10px; max-width: 200px; font-size: 1.1rem; }
+    .howl-wrap { height: 170px; margin-top: 30px; }
+    .howl { width: 280px; }
+    .howl-bubble { right: auto; left: 0; top: -44px; max-width: 170px; font-size: 1.05rem; }
     .howl-bubble::after { display: none; }
     .builder-art { height: 190px; }
     .cosmos { padding: 24px 18px; }

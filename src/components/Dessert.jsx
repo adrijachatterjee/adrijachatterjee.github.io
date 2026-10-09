@@ -25,7 +25,7 @@ export default function Dessert() {
                         {howlSays}
                     </motion.p>
                 </AnimatePresence>
-                <motion.img src="/art/howl.webp" alt="Howl from Howl's Moving Castle, smiling and saying hi" className="howl" loading="lazy"
+                <motion.img src="/art/howl.webp" alt="Howl from Howl's Moving Castle, waving hello" className="howl" loading="lazy"
                     initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 14 }} />
             </div>
 

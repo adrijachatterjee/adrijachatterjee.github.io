@@ -1,4 +1,4 @@
-// Kawaii drink mascots: a matcha bowl, a latte and a kulhad of chai.
+// Kawaii drink mascots: a matcha bowl, a coffee and a kulhad of chai.
 function Face({ cx, cy, s = 1 }) {
     return (
         <g className="cup-face">

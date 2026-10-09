@@ -18,7 +18,7 @@ export default function Comfort() {
         <section id="cafe" className="section">
             <SectionHead chapter="ch. 01" film="every ghibli film has a food scene"
                 title="before u get to know me, grab a <em>drink</em> &amp; a bowl of <em>comfort</em>"
-                lede="matcha, latte, chai: i don't discriminate (certified café girlie). build your order and i'll print you a polaroid to take home." />
+                lede="matcha, coffee, chai: i don't discriminate (certified café girlie). build your order and i'll print you a polaroid to take home." />
 
             {!printed ? (
                 <>

@@ -11,7 +11,7 @@ const BEST_KEY = 'jiji-best';
 const ITEMS = {
     parcel: { r: 15, points: 1, label: '+1 delivery' },
     matcha: { r: 14, points: 1, label: 'matcha shield!', shield: true },
-    latte: { r: 14, points: 1, label: 'latte shield!', shield: true },
+    latte: { r: 14, points: 1, label: 'coffee shield!', shield: true },
     chai: { r: 14, points: 1, label: 'chai shield!', shield: true },
     pie: { r: 15, points: 3, label: '+3 herring pie (she hates it)' },
 };
@@ -381,7 +381,7 @@ export default function JijiGame({ night }) {
                             {phase === 'ready' ? (
                                 <>
                                     <h3>Jiji's Delivery Dash</h3>
-                                    <p>hold (or press space) to fly up, let go to glide. grab parcels, sip matcha, latte or chai for a shield, and dodge the crows + clock towers. the herring pie is worth 3. nobody likes it.</p>
+                                    <p>hold (or press space) to fly up, let go to glide. grab parcels, sip matcha, coffee or chai for a shield, and dodge the crows + clock towers. the herring pie is worth 3. nobody likes it.</p>
                                 </>
                             ) : (
                                 <>
