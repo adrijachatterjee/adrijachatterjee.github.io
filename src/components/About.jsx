@@ -1,13 +1,13 @@
 import Reveal, { SectionHead } from './Reveal';
 import SootGang from './SootGang';
 import Landscape from '../art/Landscape';
-import { art } from '../data';
+import { art, languages, now } from '../data';
 
 const stats = [
     ['9.75', 'B.Tech CGPA'],
     ['3+ yrs', 'building software'],
     ['∞', 'cups of matcha, latte & chai'],
-    ['2', 'cities called home'],
+    ['4', 'languages, one in progress'],
 ];
 
 export default function About() {
@@ -31,6 +31,25 @@ export default function About() {
                         <span className="stat-num">{n}</span><span className="stat-label">{l}</span>
                     </Reveal>
                 ))}
+            </div>
+            <div className="about-row">
+                <Reveal className="glass now-card">
+                    <p className="eyebrow">right now</p>
+                    <ul>
+                        {now.map(([verb, what]) => <li key={verb}><span className="hand">{verb}</span> {what}</li>)}
+                    </ul>
+                </Reveal>
+                <Reveal className="glass lang-card" delay={0.1}>
+                    <p className="eyebrow">i say hello in</p>
+                    <div className="langs">
+                        {languages.map((l) => (
+                            <div key={l.name} className={`lang ${l.learning ? 'learning' : ''}`} tabIndex={0}>
+                                <span className="lang-hello" lang={{ Bengali: 'bn', Hindi: 'hi', English: 'en', Korean: 'ko' }[l.name]}>{l.hello}</span>
+                                <span className="lang-name">{l.name} · {l.level}</span>
+                            </div>
+                        ))}
+                    </div>
+                </Reveal>
             </div>
             <Reveal><SootGang /></Reveal>
         </section>

@@ -141,6 +141,20 @@ export const cafes = [
     // { name: 'Café name', area: 'Indiranagar', order: 'iced matcha' },
 ];
 
+export const languages = [
+    { hello: 'নমস্কার', name: 'Bengali', level: 'native' },
+    { hello: 'नमस्ते', name: 'Hindi', level: 'fluent' },
+    { hello: 'hello', name: 'English', level: 'fluent' },
+    { hello: '안녕하세요', name: 'Korean', level: 'learning', learning: true },
+];
+
+export const now = [
+    ['building', 'software at Amazon, Bengaluru'],
+    ['learning', 'Korean, one hangul letter at a time'],
+    ['sipping', 'matcha (this week, at least)'],
+    ['exploring', 'a new café every weekend'],
+];
+
 export const jijiLines = [
     'psst. she codes, writes poetry AND travels. i am just a cat.',
     'Kiki delivers bread. Adrija delivers features.',
@@ -149,6 +163,7 @@ export const jijiLines = [
     'try night mode. that is when we fly.',
     'Kiki has a cold. scroll down and help me with the deliveries?',
     'mrrp. hire her.',
+    '안녕! she is learning Korean, so i am too.',
     'i have read her code reviews. she is kinder than Yubaba.',
     'Calcifer keeps this site warm. please do not pour water on him.',
 ];
