@@ -24,7 +24,7 @@ export default function Hero() {
         <section className="hero" id="top">
             <FairyLights />
             <motion.p className="hand hero-hi" initial={{ opacity: 0, rotate: -12 }} animate={{ opacity: 1, rotate: -5 }} transition={{ delay: 0.2 }}>
-                heyy, i'm
+                hi, i'm
             </motion.p>
             <h1 className="hero-name">
                 <Letters text="Adrija" className="name-first" delay={0.3} />
