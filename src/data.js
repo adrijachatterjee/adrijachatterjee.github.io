@@ -102,9 +102,10 @@ export const experience = [
 ];
 
 export const projects = [
-    { name: 'StoryWall', blurb: 'A web app for writing and managing blogs, backed by a live JSON server.', tags: ['React', 'JSON Server'], url: links.github },
-    { name: 'Scribble Notes', blurb: 'An Android notes app where you can add, prioritise, sort and delete notes.', tags: ['Java', 'Android'], url: links.github },
-    { name: 'EasyBank', blurb: 'A responsive, interactive bank landing page that works well on mobile and desktop.', tags: ['HTML', 'SCSS', 'JavaScript'], url: links.github },
+    { name: 'StoryWall', blurb: 'A web app for writing and managing blogs, backed by a live JSON server.', tags: ['React', 'JSON Server'], url: 'https://github.com/adrijachatterjee/StoryWall' },
+    { name: 'Scribble Notes', blurb: 'An Android notes app where you can add, prioritise, sort and delete notes.', tags: ['Java', 'Android'], url: 'https://github.com/adrijachatterjee/Scribble-TheUltimateNotesJunction' },
+    { name: 'EasyBank', blurb: 'A responsive, interactive bank landing page that works well on mobile and desktop.', tags: ['HTML', 'SCSS', 'JavaScript'], url: 'https://github.com/adrijachatterjee/EasyBank-UI' },
+    { name: 'Birthday Wish', blurb: 'An animated birthday card made just for fun, live on Vercel.', tags: ['HTML', 'CSS', 'Animation'], url: 'https://happy-birthday-wish.vercel.app' },
 ];
 
 export const education = {
